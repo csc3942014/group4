@@ -3,14 +3,12 @@ CSC 394 Group 4 Analytics App
 
 ## Setting up Rails App
 
-#### Add to application.rb  
-
-	config.autoload_paths += %W(#{config.root}/lib)
-
+#### Add devise to Gemfile
+	
+	gem 'devise'
 
 #### Create databases in mysql
 #### Configure databases.yml
-
 
 #### Setup User data with devise
 
@@ -22,6 +20,24 @@ CSC 394 Group 4 Analytics App
 
 	# Add to application_controller.rb to require log-in status
 		before_action :authenticate_user!
+        
+    # Add to application.html.erb
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+
+        <p class="navbar-text pull-right">
+        <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
 
 
 #### Initialize Bootstrap
