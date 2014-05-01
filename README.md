@@ -20,24 +20,6 @@ CSC 394 Group 4 Analytics App
 
 	# Add to application_controller.rb to require log-in status
 		before_action :authenticate_user!
-        
-    # Add to application.html.erb
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
-
-        <p class="navbar-text pull-right">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-        <% end %>
 
 
 #### Initialize Bootstrap
@@ -96,8 +78,6 @@ CSC 394 Group 4 Analytics App
 
 
 	- TestSession
-		has_many: test_units
-
 		validates :user_id, 			presence: true
 		validates :start_time, 			presence: true
 		validates :end_time, 			presence: true
@@ -125,14 +105,11 @@ CSC 394 Group 4 Analytics App
 
 	- TestSuite
 		belongs_to :test_session
-		has_many: test_suite_words
 
 		validates :name, 				presence: true
 
 
 	- TestSuiteWord
-		has_many: preset_words
-
 		validates :test_suite_id, 		presence: true
 		validates :preset_word_id, 		presence: true
 
@@ -162,7 +139,7 @@ CSC 394 Group 4 Analytics App
 	
 
 	- UserRole
-		append to rold_id: 		, :null => false
+		append to role_id: 		, :null => false
 		append to user_id: 		, :null => false
 
 	
