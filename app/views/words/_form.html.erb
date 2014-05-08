@@ -1,0 +1,26 @@
+<%= form_for @word, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :word, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :word, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :length, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :length, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :consecutive_letters, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :consecutive_letters, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                words_path, :class => 'btn' %>
+  </div>
+<% end %>

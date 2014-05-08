@@ -1,25 +1,24 @@
 Rails.application.routes.draw do
+  resources :keyboards
+
+  resources :coordinates
+
   resources :preset_words
-
   resources :test_suite_words
-
   resources :test_suites
-
   resources :words
-
   resources :test_units
-
   resources :test_sessions
-
   resources :user_roles
-
   resources :roles
-
   resources :user_infos
-
   resources :user_attributes
 
   devise_for :users
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

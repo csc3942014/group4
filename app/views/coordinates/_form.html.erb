@@ -1,0 +1,26 @@
+<%= form_for @coordinate, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :word_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :word_id, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :x_coordinate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :x_coordinate, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :y_coordinate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :y_coordinate, :class => 'form-control' %>
+    </div>
+  </div>
+
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            coordinates_path, :class => 'btn btn-default' %>
+ 
+<% end %>

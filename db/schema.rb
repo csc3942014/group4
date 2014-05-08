@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501195445) do
+ActiveRecord::Schema.define(version: 20140506034147) do
 
-  create_table "preset_words", force: true do |t|
-    t.string   "word",       null: false
+  create_table "coordinates", force: true do |t|
+    t.integer  "word_id"
+    t.decimal  "x_coordinate", precision: 10, scale: 0
+    t.decimal  "y_coordinate", precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keyboards", force: true do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,8 +37,8 @@ ActiveRecord::Schema.define(version: 20140501195445) do
   create_table "test_sessions", force: true do |t|
     t.integer  "user_id",          null: false
     t.integer  "test_number",      null: false
-    t.datetime "start_time",       null: false
-    t.datetime "end_time",         null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "ease_ranking",     null: false
     t.integer  "fun_ranking",      null: false
     t.integer  "accuracy_ranking", null: false
@@ -44,8 +53,8 @@ ActiveRecord::Schema.define(version: 20140501195445) do
   add_index "test_sessions", ["user_id"], name: "index_test_sessions_on_user_id", using: :btree
 
   create_table "test_suite_words", force: true do |t|
-    t.integer  "test_suite_id",  null: false
-    t.integer  "preset_word_id", null: false
+    t.integer  "test_suite_id", null: false
+    t.integer  "word_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,10 +70,11 @@ ActiveRecord::Schema.define(version: 20140501195445) do
   create_table "test_units", force: true do |t|
     t.integer  "test_session_id", null: false
     t.integer  "word_id",         null: false
-    t.datetime "start_time",      null: false
-    t.datetime "end_time",        null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "num_backspace",   null: false
   end
 
   add_index "test_units", ["test_session_id"], name: "index_test_units_on_test_session_id", using: :btree

@@ -5,29 +5,62 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    
 </head>
 <body>
-    
-<!-- Custome code START -->
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-    
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-<!-- Custome code END -->
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Group 4</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Words", words_path %></li>
+            <li><%= link_to "User Infos", user_infos_path %></li>
+            <li><%= link_to "User Roles", user_roles_path %></li>
+            <li><%= link_to "Roles", roles_path %></li>
+            <li><%= link_to "Test Units", test_units_path %></li>
+            <li><%= link_to "Test Suites", test_suites_path %></li>
+            <li><%= link_to "Test Suite Words", test_suite_words_path %></li>
+            <li><%= link_to "Coordinates", coordinates_path %></li>
+            <li><%= link_to "Keyboards", keyboards_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+      <div class="span3">
+        <h2>About Us</h2>
+        We are the awesome group 4 for CSC394.
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
+<!--              
+            <% if user_signed_in? %>
+              <!-- Logged in as <strong><%= current_user.email %></strong>. -->
+              <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+            <% end %>
+
+-->
 
 </body>
 </html>
