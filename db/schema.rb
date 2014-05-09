@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506034147) do
+ActiveRecord::Schema.define(version: 20140508235316) do
+
+  create_table "attributes", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "coordinates", force: true do |t|
     t.integer  "word_id"
@@ -62,9 +68,10 @@ ActiveRecord::Schema.define(version: 20140506034147) do
   add_index "test_suite_words", ["test_suite_id"], name: "index_test_suite_words_on_test_suite_id", using: :btree
 
   create_table "test_suites", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "keyboard_id"
   end
 
   create_table "test_units", force: true do |t|
@@ -80,10 +87,10 @@ ActiveRecord::Schema.define(version: 20140506034147) do
   add_index "test_units", ["test_session_id"], name: "index_test_units_on_test_session_id", using: :btree
 
   create_table "user_attributes", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "attribute_id"
   end
 
   add_index "user_attributes", ["user_id"], name: "index_user_attributes_on_user_id", using: :btree
