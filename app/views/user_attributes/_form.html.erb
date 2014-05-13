@@ -1,20 +1,20 @@
 <%= form_for @user_attribute, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :attribute_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :attribute_id, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :user_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :user_id, :class => 'text_field' %>
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :attribute_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :attribute_id, :class => 'form-control' %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                user_attributes_path, :class => 'btn' %>
-  </div>
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            user_attributes_path, :class => 'btn btn-default' %>
+ 
 <% end %>

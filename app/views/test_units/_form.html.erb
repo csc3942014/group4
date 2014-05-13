@@ -1,38 +1,38 @@
 <%= form_for @test_unit, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-      <%= f.label :test_session_id, :class => 'control-label' %>
+  <div class="form-group">
+    <%= f.label :test_session_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :test_session_id, :class => 'text_field' %>
+      <%= f.text_field :test_session_id, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-      <%= f.label :word_id, :class => 'control-label' %>
+  <div class="form-group">
+    <%= f.label :word_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :word_id, :class => 'text_field' %>
+      <%= f.text_field :word_id, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-      <%= f.label :num_backspace, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :num_backspace, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :start_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :start_time, :value => @my_object.try(:start_date).try(:strftime,'%m/%d/%Y'), :class => 'text_field' %>
+      <%= f.text_field :start_time, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
-      <%= f.label :end_time, :class => 'control-label' %>
+  <div class="form-group">
+    <%= f.label :end_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :end_time, :value => @my_object.try(:start_date).try(:strftime,'%m/%d/%Y'), :class => 'text_field' %>
+      <%= f.text_field :end_time, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :num_backspace, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_backspace, :class => 'form-control' %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                test_units_path, :class => 'btn' %>
-  </div>
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            test_units_path, :class => 'btn btn-default' %>
+ 
 <% end %>

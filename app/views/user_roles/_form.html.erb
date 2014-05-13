@@ -1,26 +1,26 @@
 <%= form_for @user_role, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :role_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :role_id, :class => 'text_field' %>
+      <%= f.text_field :role_id, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :user_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :user_id, :class => 'text_field' %>
+      <%= f.text_field :user_id, :class => 'form-control' %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                user_roles_path, :class => 'btn' %>
-  </div>
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            user_roles_path, :class => 'btn btn-default' %>
+ 
 <% end %>

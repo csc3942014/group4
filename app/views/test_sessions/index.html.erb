@@ -8,8 +8,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:test_number) %></th>
-      <th><%= model_class.human_attribute_name(:start_time) %></th>
-      <th><%= model_class.human_attribute_name(:end_time) %></th>
       <th><%= model_class.human_attribute_name(:ease_ranking) %></th>
       <th><%= model_class.human_attribute_name(:fun_ranking) %></th>
       <th><%= model_class.human_attribute_name(:accuracy_ranking) %></th>
@@ -25,8 +23,6 @@
         <td><%= link_to test_session.id, test_session_path(test_session) %></td>
         <td><%= test_session.user_id %></td>
         <td><%= test_session.test_number %></td>
-        <td><%= test_session.start_time %></td>
-        <td><%= test_session.end_time %></td>
         <td><%= test_session.ease_ranking %></td>
         <td><%= test_session.fun_ranking %></td>
         <td><%= test_session.accuracy_ranking %></td>
@@ -35,12 +31,12 @@
         <td><%=l test_session.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_test_session_path(test_session), :class => 'btn btn-mini' %>
+                      edit_test_session_path(test_session), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       test_session_path(test_session),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>

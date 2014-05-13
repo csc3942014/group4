@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 20140508235316) do
   create_table "test_sessions", force: true do |t|
     t.integer  "user_id",          null: false
     t.integer  "test_number",      null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.integer  "ease_ranking",     null: false
     t.integer  "fun_ranking",      null: false
     t.integer  "accuracy_ranking", null: false

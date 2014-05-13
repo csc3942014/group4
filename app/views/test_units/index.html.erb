@@ -8,9 +8,9 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:test_session_id) %></th>
       <th><%= model_class.human_attribute_name(:word_id) %></th>
-      <th><%= model_class.human_attribute_name(:num_backspace) %></th>
       <th><%= model_class.human_attribute_name(:start_time) %></th>
       <th><%= model_class.human_attribute_name(:end_time) %></th>
+      <th><%= model_class.human_attribute_name(:num_backspace) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -21,18 +21,18 @@
         <td><%= link_to test_unit.id, test_unit_path(test_unit) %></td>
         <td><%= test_unit.test_session_id %></td>
         <td><%= test_unit.word_id %></td>
-        <td><%= test_unit.num_backspace %></td>
         <td><%= test_unit.start_time %></td>
         <td><%= test_unit.end_time %></td>
+        <td><%= test_unit.num_backspace %></td>
         <td><%=l test_unit.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_test_unit_path(test_unit), :class => 'btn btn-mini' %>
+                      edit_test_unit_path(test_unit), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       test_unit_path(test_unit),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>

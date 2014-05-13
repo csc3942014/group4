@@ -4,7 +4,6 @@ default: &default
   pool: 5
   username: root
   password: csc+394+2014
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default

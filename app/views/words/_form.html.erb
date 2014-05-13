@@ -1,26 +1,26 @@
 <%= form_for @word, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :word, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :word, :class => 'text_field' %>
+      <%= f.text_field :word, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :length, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :length, :class => 'text_field' %>
+      <%= f.text_field :length, :class => 'form-control' %>
     </div>
   </div>
-  <div class="control-group">
+  <div class="form-group">
     <%= f.label :consecutive_letters, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :consecutive_letters, :class => 'text_field' %>
+      <%= f.text_field :consecutive_letters, :class => 'form-control' %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                words_path, :class => 'btn' %>
-  </div>
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            words_path, :class => 'btn btn-default' %>
+ 
 <% end %>
