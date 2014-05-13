@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'landing_page/index',		:as => :landing_page
+
   get 'testing/index', 			:as => :testing
   get 'test_setup/index', 		:as => :test_setup
   get 'analytics_comparatif/index', 	:as => :analytics_comparatif
