@@ -1,0 +1,2 @@
+module AnalyticsSpecificHelper
+end
