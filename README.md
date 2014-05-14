@@ -1,6 +1,18 @@
 CSC 394 Group 4 Analytics App
 =============================
 
+## Encironments
+
+http://jhuria-charca.codio.io:3000
+git@github.com:csc3942014/group4.git
+
+Dev server: http://107.170.48.243
+ssh with:
+user: root
+pass: our usual)
+
+--> The repo is in group4 directory... do "git checkout" to download the latest version
+
 ## Setting up Rails App
 
 #### Add devise to Gemfile
