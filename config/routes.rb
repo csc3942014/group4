@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   get 'landing_page/index',		:as => :landing_page
 
-  get 'test_manager/index',		:as => :test_manager
-  get 'testing/index', 			:as => :testing
-  get 'test_setup/index', 		:as => :test_setup
+  get 'test_manager/index',		        :as => :test_manager
+  get 'testing/index', 			        :as => :testing
+  get 'test_setup/index', 		        :as => :test_setup
   get 'analytics_comparatif/index', 	:as => :analytics_comparatif
-  get 'analytics_specific/index', 	:as => :analytics_specific
-  get 'analytics_general/index', 	:as => :analytics_general
-  get 'home_page/index', 		:as => :home_page
+  get 'analytics_specific/index', 	    :as => :analytics_specific
+  get 'analytics_general/index', 	    :as => :analytics_general
+  get 'home_page/index', 		        :as => :home_page
 
   resources :attributes
   resources :keyboards

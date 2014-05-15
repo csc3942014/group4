@@ -1,41 +1,37 @@
-
+<!DOCTYPE HTML>
+<!-- Homepage Index View -->
 
 <head>
-    <style media="screen" type="text/css">
-
-Add style rules here
-    .left {
-      float: left;
-      width: 200px;
-      text-align: r   margin: 2px 10px;
-      display: inline;
-    }
-
-    .right {
-      float: right;
-      text-align: center;
-      margin: 2px 10px;
-      display: inline;
-    }
-    </style>
+    <title>AR UTARS  |  Homepage</title>
 </head>
 
 
-<h2>Welcome</h2>
-Administrator Homepage
-
-<!-- add links for "logout" and "edit profile" at the top of the view -->
 
 
-<!-- first, determine if the current auth_user is an admin or a user and display the appropriate buttons/links -->
+<h1>Welcome</h1>
+<h4>Administrator Homepage</h4>
+
+<p>
+
+<% if @is_an_admin %>
+    Hey, admin!
+<% else %>
+    Hey, user!
+    <%= @is_an_admin %>
+<% end %>
+    
+</p>
+
+<%= @x %>
 
 <!-- if auth_user is an admin, display "Manage User Attributes" button, "Analyze Test Data" button, and "Manage Tests" button -->
 
 <!-- add analytics button, this should be top and cetered -->
 <br>
 
+<% if @is_an_admin %>
 <center>
-    <a href="/analytics_general/index"><img style="border:0;" src="/assets/ViewAnalyticsIcon.png"" alt="View Analytics" width="175" height="175"></a>
+    <a href="/analytics_general/index"><img style="border:0;" src="/assets/ViewAnalyticsIcon.png" alt="View Analytics" width="175" height="175"></a>
     <br>
     <h4>
         View Analytics
@@ -47,12 +43,12 @@ Administrator Homepage
 
 <span>
 <div class="right">                                                                                                                                                
-    <a href="/user_attributes"><img style="border:0;" src="/assets/circIconResources.png"" alt="Manage User Attributes" width="175" height="175"></a> 
+    <a href="/test_manager/index"><img style="border:0;" src="/assets/ManageTestsIcon.png" alt="Manage User Attributes" width="175" height="175"></a> 
 </div>
 </span>
 <span>
 <div class="left">
-    <a href="/user_attributes"><img style="border:0;" src="/assets/UserAttributesIcon.png"" alt="Manage User Attributes" width="175" height="175"></a>
+    <a href="/attributes"><img style="border:0;" src="/assets/UserAttributesIcon.png" alt="Manage User Attributes" width="175" height="175"></a>
 </div>
 </span>
 <br>
@@ -60,22 +56,18 @@ Administrator Homepage
     <h4>Manage Tests</h4>
 </div>
 <div class="left">
-    <h4>Manage User Attributes</h4>
+    <h4>Manage User Attributes   </h4>
 </div>
-         
-<style type="text/css">
-div.inline { float:left; }
-.clearBoth { clear:both; }
-</style>
-<div class="inline"><a href="/user_attributes"><img style="border:0;" src="/assets/circIconResources.png"" alt="Manage User Attributes" width="175" height="175"></a></div>
-<div class="inline"><a href="/user_attributes"><img style="border:0;" src="/assets/UserAttributesIcon.png"" alt="Manage User Attributes" width="175" height="175"></a></div>
-<br class="clearBoth" /><!-- you may or may not need this -->
-    
+             
 <!-- add manage user attributes and manage tests buttons, they should be lower than analytics and on the same level as each other -->
-    
-
-
-
-
 
 <!-- else if auth_user is a user, display "New Test" button -->
+<% else %>
+    <center>
+        <a href="/test_setup/index"><img style="border:0;" src="/assets/NewTestIcon.png" alt="Setup New Test" width="175" height="175"></a>
+        <br>
+        <h4>
+            Setup New Test
+        </h4>
+    </center>
+<% end %>

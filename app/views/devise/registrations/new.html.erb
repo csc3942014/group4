@@ -1,18 +1,85 @@
+
+
+
+<style>
+    
+    
+
+.signUpForm {
+    text-align: center;
+    margin:auto;
+    margin-top: 50px;
+    width: 60%;
+    background-color: rgba(0,0,0,.2);
+    padding-bottom:30px;
+    padding-top: 30px;
+    border-radius: 18px;
+    box-shadow: 20px 30px 30px silver;  
+}
+textarea, select, .uneditable-input {
+  border-style: solid;                  
+  border-color:silver;
+  height:20px;
+  width: 60%;
+  margin-bottom: 50px;
+}
+
+</style>
+
+<br>
+<br>
+<br>
+<br>
+
+<center>
+<nav class="segmented-button">
+  <input type="radio" name="seg-1" value="user" id="seg-user" checked>
+  <label for="seg-user" class="first">User</label>
+  <input type="radio" name="seg-1" value="admin" id="seg-admin">
+  <label for="seg-admin" class="last">Admin</label>
+</nav>
+</center>
+
+
+<div class ="signUpForm">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+<table>
+    <tr>
+        <td>
+              <div><%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %></div>
+    
+              <div><%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off" %></div>
+    
+    
+              <div><%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+        </td>
+   
+        <td>
+            <div align="left">
+                <h1>Attributes</h1>
+                <input type="checkbox" name="lefthanded" value="Left Handed">Left-Handed<br>
+                <input type="checkbox" name="righthanded" value="Right Handed">Right-Handed<br>
+                <input type="checkbox" name="amb" value="Amb">Ambidextrous<br>
+                <input type="checkbox" name="MD" value="MD">Muscular Dystrophy<br>
+                <input type="checkbox" name="HI" value="HI">Hearing Impaired<br>
+            </div>      
+        </td>      
+    </tr>
+</table>
+
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

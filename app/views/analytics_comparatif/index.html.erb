@@ -1,2 +1,39 @@
-<h2>Da place</h2>
-This is the comparatif analytics view...
+<!DOCTYPE HTML>
+<!-- analytics_comparative page -->
+<html>
+<head>
+    <title>AR UTARS Analytics  |  Comparative</title>
+</head>
+
+<body>
+
+    <h1>Analytics</h1>
+    <h4>View Data Comparisons </h4>
+
+    <center>
+        <nav class="segmented-button">
+          <input type="radio" name="seg-1" value="General" id="seg-General">
+          <label for="seg-General" class="first">General</label>
+          <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific">
+          <label for="seg-Specific">Specific Tests</label>
+          <input type="radio" name="seg-3" value="Comparative" id="seg-Compare" checked>
+          <label for="seg-Compare" class="last">Comparative</label>
+        </nav>
+    </center>
+
+
+    <script type="text/javascript">
+        $("input[name=seg-1]").click(function(){
+            window.location.href = '/analytics_general/index';
+        });
+        $("input[name=seg-2]").click(function(){
+            window.location.href = '/analytics_specific/index';
+        });
+        $('.segmented-button label').click(function(evt){
+            evt.stopPropagation();
+            window.location.href = '/home_page/index';
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,17 +1,55 @@
-<h2>Sign in</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<style type="text/css">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+.signInForm {
+    text-align: center;
+    margin:auto;
+    margin-top: 50px;
+    width: 60%;
+    background-color: rgba(0,0,0,.2);
+    padding-bottom:30px;
+    padding-top: 30px;
+    border-radius: 18px;
+    box-shadow: 20px 30px 30px silver;  
+}
+textarea, select, .uneditable-input {
+  border-style: solid;                  
+  border-color:silver;
+  height:20px;
+  width: 60%;
+  margin-bottom: 50px;
+}
+</style>
+</head>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<body>
+    <br />
+    <br />
+    <center>
+    <nav class="segmented-button">
+      <input type="radio" name="seg-1" value="user" id="seg-user" checked>
+      <label for="seg-user" class="first">User</label>
+      <input type="radio" name="seg-1" value="admin" id="seg-admin">
+      <label for="seg-admin" class="last">Admin</label>
+    </nav>
+    </center>
+    <div class="signInForm">
+        <h1>Sign In</h1>
+        <form>
+            <label for="session_email"><h3>Email:</h3></label>
+            <input id="session_email" name="session[email]" type="text" /><br />
+            <label for="session_password"><h3>Password:</h3></label>
+            <input id="session_password" name="session[password]" type="password" /><br />
+            <p><input type="checkbox" value="Remember Me">Remember Me</p>
+            <input name="commit" type="submit" value="Sign In" /><br />
+            <br />
+            <br />
+            <span align="right"> New User? </span><a href="/users/sign_up">Sign Up Now!</a>
+        </form>
+    </div>
+</body>
+</html>

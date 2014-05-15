@@ -1,2 +1,39 @@
-<h2>Da place</h2>
-This is the test setup view...
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AR UTARS  |  Setup A New Test</title>
+    </head>
+
+    <body>
+        <h1>New Test</h1>
+        <h5>Configure Setup</h5>
+        
+        <br><br>
+        <p>
+            <h4>Select keyboard to test</h4>
+            <select>
+                <!-- show all keyboard options -->
+                <!-- the following four hard-coded values are place holders -->
+                <% for @kbrd in @kbrds %>
+                    <option value = @kbrd.name><%= @kbrd.name %></option>
+                <% end %>
+            </select>
+        </p>
+        
+        <br><br>
+        <p>
+            <h4>Select Test Suite</h4>
+            <select>
+                <!-- show all test suites -->
+                <!-- the following four hard-coded values are place holders -->
+                <option value="kb1">Test Suite 1</option>
+                <option value="saab">Test Suite 2</option>
+                <option value="mercedes">one-letter words 1</option>
+                <option value="audi">Nouns and Slang 1</option>
+            </select>
+        </p>
+
+    </body>
+
+    
+</html>

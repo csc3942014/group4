@@ -1,2 +1,40 @@
-<h2>Da place</h2>
-This is the general analytics view...
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+    
+   
+    <h1>Analytics</h1>
+    <h4>Data Overview</h4>
+
+    <center>
+        <nav class="segmented-button">
+            <input type="radio" name="seg-1" value="General" id="seg-General" checked>
+            <label for="seg-General" class="first">General</label>
+            <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific">
+            <label for="seg-Specific">Specific Tests</label>
+            <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
+            <label for="seg-Compare" class="last">Comparative</label>
+        </nav>
+    </center>
+
+    <!-- Detect when a button on the segmented control is clicked -->
+    <script type="text/javascript">
+        $("input[name=seg-2]").click(function(){
+            window.location.href = '/analytics_specific/index';
+        });
+        $("input[name=seg-3]").click(function(){
+            window.location.href = '/analytics_comparatif/index';
+        });
+        $('.segmented-button label').click(function(evt){
+            evt.stopPropagation();
+            window.location.href = '/home_page/index';
+        });
+    </script>
+
+    </body>
+</html>

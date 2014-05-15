@@ -4,4 +4,8 @@ class TestSetupController < ApplicationController
 
   def create
   end
+    
+  def index
+      @kbrds = Keyboard.all;
+  end
 end
