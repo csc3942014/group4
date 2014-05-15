@@ -1,2 +1,9 @@
 http://jhuria-charca.codio.io:3000/
 github: git@github.com:csc3942014/group4.git
+
+You gain a bit of load time by doing 'bundle exec rake assets:precompile && rails s' instead of just rails s
+
+Our dev server: http://107.170.48.243
+You can ssh into it using:
+user: root
+pass: csc+394+2014

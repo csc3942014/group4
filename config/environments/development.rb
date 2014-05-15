@@ -8,6 +8,11 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+    
+  config.dev_tweaks.autoload_rules do
+      # Reload on XHR requests
+      keep :xhr
+  end
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
