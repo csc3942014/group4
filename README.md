@@ -11,7 +11,7 @@ CSC 394 Group 4 Analytics App
   * user: root
   * pass: (our usual)
 
-The repo is in group4 directory... do "git checkout" to download the latest version
+The repo is in group4 directory... do "git pull" to download the latest version
 
 ## Setting up Rails App
 
