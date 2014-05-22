@@ -13,6 +13,16 @@ CSC 394 Group 4 Analytics App
 
 The repo is in group4 directory... do "git pull" to download the latest version
 
+## Flow
+
+To add your changes:
+- git add .
+- git commit -am "What you did"
+- git push
+
+To pull the latest changes:
+- git pull
+
 ## Setting up Rails App
 
 #### Add devise to Gemfile
