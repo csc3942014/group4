@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508235316) do
+ActiveRecord::Schema.define(version: 20140522224324) do
 
   create_table "attributes", force: true do |t|
     t.string   "name",       null: false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20140508235316) do
   create_table "test_sessions", force: true do |t|
     t.integer  "user_id",          null: false
     t.integer  "test_number",      null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "ease_ranking",     null: false
     t.integer  "fun_ranking",      null: false
     t.integer  "accuracy_ranking", null: false
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140508235316) do
     t.integer  "test_unit_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "keyboard_id"
   end
 
   add_index "test_sessions", ["test_suite_id"], name: "index_test_sessions_on_test_suite_id", using: :btree
@@ -66,10 +69,9 @@ ActiveRecord::Schema.define(version: 20140508235316) do
   add_index "test_suite_words", ["test_suite_id"], name: "index_test_suite_words_on_test_suite_id", using: :btree
 
   create_table "test_suites", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "keyboard_id"
   end
 
   create_table "test_units", force: true do |t|
