@@ -25,13 +25,15 @@
             <h4>Select Test Suite</h4>
             <select>
                 <!-- show all test suites -->
-                <!-- the following four hard-coded values are place holders -->
-                <option value="kb1">Test Suite 1</option>
-                <option value="saab">Test Suite 2</option>
-                <option value="mercedes">one-letter words 1</option>
-                <option value="audi">Nouns and Slang 1</option>
+                <% for @testsuite in @ts %>
+                <option value = @testsuite.name><%= @testsuite.name %></option>
+                <% end %>
             </select>
         </p>
+
+        
+        <button class="btn btn-primary" type="submit" >Start Test</button>
+        
 
     </body>
 
