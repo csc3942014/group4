@@ -1,79 +1,8 @@
 
 <style>
-.form-signin {
-    max-width: 300px;
-    padding: 19px 29px 29px;
-    margin: 40px auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-            box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 10px;
-}
-
-.form-signin input[type="email"],
-.form-signin input[type="password"] {
-    font-size: 16px;
-    height: auto;
-    margin-bottom: 15px;
-    padding: 7px 9px;
-}
     input[type = "checkbox"]{
         margin: 5px 5px 5px
     }
-    .textboxes{
-        align="left"
-    }
-tbody {
-  border: 1px #e4e4e4 solid;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 0 6px #ccc;
-}
-    #wrapper {
-  border: 1px #e4e4e4 solid;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 0 6px #ccc;
-}
-    
-}
-    /* User sign in and sign forms. */
-.border-form-div {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-          box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.border-form-div .form-signin-heading,
-.border-form-div .checkbox {
-  margin-bottom: 10px;
-}
-.border-form-div input[type="text"],
-.border-form-div input[type="email"],
-.border-form-div input[type="password"] {
-  font-size: 16px;
-  height: auto;
-  margin-bottom: 15px;
-  padding: 7px 9px;
-}
-    
-    
 </style>
 
 <br>
@@ -92,28 +21,38 @@ tbody {
 
 
 
-
 <%= form_for(resource, :as => resource_name, :html => {class:"form-signin"}, :url => session_path(resource_name)) do |f| %>
-<h2 class:"form-signin-heading">Please sign in</h2>
+<h2 class:"form-signin-heading">Sign Up</h2>
     
-<%= f.email_field :email, :autofocus => true, class:"input-block-level", placeholder:"Email address" %>
+<div>
+           <div style="margin:left">
+              <div style="padding:5px 5px 5px 0px"><%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class:"input-block-level", placeholder:"Email address"%></div>
     
-<%= f.password_field :password, class:"input-block-level", placeholder:"Password"%>
+              <div style="padding:5px 5px 5px 0px"><%= f.label :password %><br />
+              <%= f.password_field :password, class:"input-block-level", autocomplete: "off", placeholder:"Password" %></div>
+    
+    
+              <div style="padding:5px 5px 5px 0px"><%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, class:"input-block-level", autocomplete: "off", placeholder:"Retype Password" %></div>
+              </div>
 
-<% if devise_mapping.rememberable? -%> 
-    <label class="checkbox">
-        <%= f.check_box :remember_me %> Remember Me
-    </label>
-<% end -%>
+            <fieldset>
+            <div style="margin:right" align="left">
+                <h3>Attributes</h3>
+                <input type="checkbox" name="lefthanded" value="Left Handed">Left-Handed<br>
+                <input type="checkbox" name="righthanded" value="Right Handed">Right-Handed<br>
+                <input type="checkbox" name="amb" value="Amb">Ambidextrous<br>
+                <input type="checkbox" name="MD" value="MD">Muscular Dystrophy<br>
+                <input type="checkbox" name="HI" value="HI">Hearing Impaired<br>
+            </div>    
+            </fieldset>
+</div>
 
-<%= f.submit "Sign in", class:"btn btn-large btn-primary" %>
-
-                
-<br>
-<br>
-<br>
-    <button class = "btn btn-primary"><f.submit "Sign up" %>Sign up<button>
-
+<%= f.submit "Sign Up", class:"btn btn-large btn-primary" %>
+              
 <%= render "devise/shared/links" %>
 
 <% end %>
+
+

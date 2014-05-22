@@ -7,7 +7,6 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:keyboard_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= link_to test_suite.id, test_suite_path(test_suite) %></td>
         <td><%= test_suite.name %></td>
-        <td><%= test_suite.keyboard_id %></td>
         <td><%=l test_suite.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

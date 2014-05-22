@@ -13,6 +13,7 @@
       <th><%= model_class.human_attribute_name(:accuracy_ranking) %></th>
       <th><%= model_class.human_attribute_name(:test_suite_id) %></th>
       <th><%= model_class.human_attribute_name(:test_unit_id) %></th>
+      <th><%= model_class.human_attribute_name(:keyboard_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -28,6 +29,7 @@
         <td><%= test_session.accuracy_ranking %></td>
         <td><%= test_session.test_suite_id %></td>
         <td><%= test_session.test_unit_id %></td>
+          <td><%= test_session.keyboard_id %></td>
         <td><%=l test_session.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
