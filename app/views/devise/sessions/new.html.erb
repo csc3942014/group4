@@ -25,8 +25,12 @@ textarea, select, .uneditable-input {
 }
 </style>
 </head>
-
+    
+    
+    
 <body>
+    <br />
+    <br />
     <br />
     <br />
     <center>
@@ -37,19 +41,34 @@ textarea, select, .uneditable-input {
       <label for="seg-admin" class="last">Admin</label>
     </nav>
     </center>
-    <div class="signInForm">
-        <h1>Sign In</h1>
-        <form>
-            <label for="session_email"><h3>Email:</h3></label>
-            <input id="session_email" name="session[email]" type="text" /><br />
-            <label for="session_password"><h3>Password:</h3></label>
-            <input id="session_password" name="session[password]" type="password" /><br />
-            <p><input type="checkbox" value="Remember Me">Remember Me</p>
-            <input name="commit" type="submit" value="Sign In" /><br />
-            <br />
-            <br />
-            <span align="right"> New User? </span><a href="/users/sign_up">Sign Up Now!</a>
-        </form>
-    </div>
+    
+    
+  <%= form_for(resource, :as => resource_name, :html => {class:"form-signin"}, :url => session_path(resource_name)) do |f| %>
+<h2 class:"form-signin-heading">Sign In</h2>
+    
+
+           <div>
+              <div><%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class:"input-block-level", placeholder:"Email Address"%></div>
+    
+              <div style="padding:5px 5px 5px 0px"><%= f.label :password %><br />
+              <%= f.password_field :password, class:"input-block-level", autocomplete: "off", placeholder:"Password" %></div>
+              </div>
+
+
+<%= f.submit "Sign In", class:"btn btn-large btn-primary" %>       
+
+
+<%= render "devise/shared/links" %>  
+
+
+<% end %>
+
+    
+    
+    
+    
+    
+    
 </body>
 </html>
