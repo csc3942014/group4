@@ -1,6 +1,31 @@
 
 <style>
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 40px auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
 
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="email"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
     input[type = "checkbox"]{
         margin: 5px 5px 5px
     }
@@ -50,8 +75,7 @@ tbody {
     
     
 </style>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
 <br>
 <br>
 <br>
@@ -67,89 +91,29 @@ tbody {
 </center>
 
 
-<form role="form">
-  <div class="form-group">
-      
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
+
+
+<%= form_for(resource, :as => resource_name, :html => {class:"form-signin"}, :url => session_path(resource_name)) do |f| %>
+<h2 class:"form-signin-heading">Please sign in</h2>
+    
+<%= f.email_field :email, :autofocus => true, class:"input-block-level", placeholder:"Email address" %>
+    
+<%= f.password_field :password, class:"input-block-level", placeholder:"Password"%>
+
+<% if devise_mapping.rememberable? -%> 
+    <label class="checkbox">
+        <%= f.check_box :remember_me %> Remember Me
     </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<% end -%>
 
+<%= f.submit "Sign in", class:"btn btn-large btn-primary" %>
 
-
-
-<div class ="form" align="center">
-
-
-<%= form_for(resource, :html => {:class => "well"}, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-
-<table>
-    <tbody>
-    <tr>   
-        <td align="left">
-            <h2>Sign up</h2>
-        </td>
-        <td>
-        </td>
-    </tr>
-    <tr>
-        <td style="padding:5px 50px 5px 5px">
-            <div class ="textboxes">
-              <div style="padding:5px 5px 5px 0px"><%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true %></div>
-    
-              <div style="padding:5px 5px 5px 0px"><%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "off" %></div>
-    
-    
-              <div style="padding:5px 5px 5px 0px"><%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-              </div>
-        </td>
-   
-        <td style="padding:5px 5px 75px 50px">
-            <fieldset>
                 
-
-            <div align="left">
-                <h3>Attributes</h3>
-                <input type="checkbox" name="lefthanded" value="Left Handed">Left-Handed<br>
-                <input type="checkbox" name="righthanded" value="Right Handed">Right-Handed<br>
-                <input type="checkbox" name="amb" value="Amb">Ambidextrous<br>
-                <input type="checkbox" name="MD" value="MD">Muscular Dystrophy<br>
-                <input type="checkbox" name="HI" value="HI">Hearing Impaired<br>
-            </div>    
-                            </fieldset>
-        </td>      
-    </tr>
-</tbody>
-</table>
-
 <br>
 <br>
 <br>
     <button class = "btn btn-primary"><f.submit "Sign up" %>Sign up<button>
 
-  <!--<a class="btn btn-primary"><%= f.submit "Sign up" %></a>-->
-<% end %>
-
 <%= render "devise/shared/links" %>
 
-</div>
+<% end %>
