@@ -1,7 +1,5 @@
 class TestManagerController < ApplicationController
-  def new
-  end
-
-  def create
+  def index
+      @test_suites = TestSuite.all
   end
 end
