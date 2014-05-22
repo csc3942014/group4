@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522224324) do
+ActiveRecord::Schema.define(version: 20140522225124) do
 
   create_table "attributes", force: true do |t|
     t.string   "name",       null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140522224324) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "num_backspace",   null: false
+    t.string   "input"
   end
 
   add_index "test_units", ["test_session_id"], name: "index_test_units_on_test_session_id", using: :btree
