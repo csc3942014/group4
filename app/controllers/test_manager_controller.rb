@@ -16,5 +16,9 @@ class TestManagerController < ApplicationController
 
       render :partial => "test_suite_words", object: @words
   end
+    
+  def new_word_button
+      render :partial => "test_suite_words_button"
+  end
 
 end

@@ -2,6 +2,7 @@ function loadSuiteWords(row, suiteId)
 {
     cleanRowStyles();
     $(row).parent('tr').addClass('success');
+    $( ".newBtn" ).load( "/test_manager/new_word_button" );
     $( ".wordsTbl" ).load( "/test_manager/reload_words", { test_suite_id: suiteId } );
 };
 
