@@ -5,6 +5,8 @@ class TestManagerController < ApplicationController
   end
     
   def reload_words
+      logger.debug "elo"
+      
       @ids_query = TestSuiteWord.where('test_suite_id = ?', params[:test_suite_id].to_i)
       
       @word_ids = Array.new
@@ -16,9 +18,4 @@ class TestManagerController < ApplicationController
 
       render :partial => "test_suite_words", object: @words
   end
-    
-  def new_word_button
-      render :partial => "test_suite_words_button"
-  end
-
 end

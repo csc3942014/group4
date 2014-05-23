@@ -1,9 +1,10 @@
 function loadSuiteWords(row, suiteId)
 {
-    cleanRowStyles();
-    $(row).parent('tr').addClass('success');
-    $( ".newBtn" ).load( "/test_manager/new_word_button" );
+    enableNewBUtton();
+    setSelectedRow(row);
+    
     $( ".wordsTbl" ).load( "/test_manager/reload_words", { test_suite_id: suiteId } );
+    
 };
 
 function cleanRowStyles()
@@ -12,4 +13,13 @@ function cleanRowStyles()
     for (var i = 0, row; row = table.rows[i]; i++) {
        $(row).removeClass('success'); 
     }
+}
+function enableNewBUtton()
+{
+    document.getElementById("newWrdBtn").classList.remove("disabled");
+}
+function setSelectedRow(row)
+{
+    cleanRowStyles();
+    $(row).parent('tr').addClass('success');
 }
