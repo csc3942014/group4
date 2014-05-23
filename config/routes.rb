@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'landing_page/index',		:as => :landing_page
+  get 'landing_page/index',		        :as => :landing_page
+    
+  post 'test_manager/reload_words'
 
   get 'test_manager/index',		        :as => :test_manager
   get 'testing/index', 			        :as => :testing

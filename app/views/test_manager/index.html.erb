@@ -3,25 +3,43 @@
   <h1><%=t '.title', :default => "Manage Test Suites & Words" %></h1>
 </div>
 
-<table class="table table-striped">
-  <tbody>
-    <% @test_suites.each do |test_suite| %>
-      <tr>
-        <td><%= test_suite.name %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_test_suite_path(test_suite), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      test_suite_path(test_suite),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+<table width="100%">
+    <tr>
+        <td width="48%" valign="top">
+            <table class="table table-striped" id="tsTbl">
+                <% @test_suites.each do |test_suite| %>
+                  <tr>
+                    <td onclick="loadSuiteWords(this, <%= test_suite.id %>)"><%= test_suite.name %></td>
+                    <td align="right">
+                      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                  edit_test_suite_path(test_suite), :class => 'btn btn-default btn-xs' %>
+                      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                                  test_suite_path(test_suite),
+                                  :method => :delete,
+                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                  :class => 'btn btn-xs btn-danger' %>
+                    </td>
+                  </tr>
+                <% end %>
+            </table>
         </td>
-      </tr>
-    <% end %>
-  </tbody>
+        <td width="4%">&nbsp;</td>
+        <td width="48%" valign="top">
+            <div class="wordsTbl"></div>
+        </td>
+    </tr>
+    <tr>
+        <td><center>
+            <%= link_to t('.new', :default => t("New Test Suite")),
+                                  new_test_suite_path,
+                                  :class => 'btn btn-primary' %>
+        </center></td>
+        <td></td>
+        <td><center>
+            <%= link_to t('.new', :default => t("New Word")),
+                                  new_word_path,
+                                  :class => 'btn btn-primary' %>
+        </center></td>
+    </tr>
+    
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_test_suite_path,
-            :class => 'btn btn-primary' %>

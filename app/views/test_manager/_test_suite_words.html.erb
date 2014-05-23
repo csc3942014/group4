@@ -1,0 +1,19 @@
+<table class="table table-striped">
+
+    <% @words.each do |word| %>
+        <tr>
+            <td><%= word.word %></td>
+            <td align="right">
+                <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                        edit_word_path(word), 
+                                        :class => 'btn btn-default btn-xs' %>
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                                           word_path(word),
+                                           :method => :delete,
+                                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                           :class => 'btn btn-xs btn-danger' %>
+            </td>
+        </tr>
+    <% end %>
+    
+</table>
