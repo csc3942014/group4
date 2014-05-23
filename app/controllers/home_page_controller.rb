@@ -5,13 +5,6 @@ class HomePageController < ApplicationController
 
   # ensure user or admin logged in for these actions (:only option is optional)
   #before_filter :check_user_logged_in!, :only => [:show, :index]
-
-    
-  def new
-  end
-
-  def create
-  end
     
   def index
       #@isAdmin = current_user.admin?
