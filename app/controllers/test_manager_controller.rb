@@ -15,6 +15,7 @@ class TestManagerController < ApplicationController
       end
       
       @words = Word.find(@word_ids)
+      @word = Word.new
 
       render :partial => "test_suite_words", object: @words
   end
