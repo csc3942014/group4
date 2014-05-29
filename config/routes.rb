@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'analytics_specific/index', 	    :as => :analytics_specific
   get 'analytics_general/index', 	    :as => :analytics_general
   get 'home_page/index', 		        :as => :home_page
+  get 'testing/Redirect'
+  get 'testing/Testing_page'
 
   resources :attributes
   resources :keyboards
