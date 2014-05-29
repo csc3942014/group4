@@ -35,6 +35,26 @@
             window.location.href = '/home_page/index';
         });
     </script>
+        
+    <!-- For each keyboard in the database -->
+    <div style='overflow-x:scroll;overflow-y:hidden;width:100%;height:500px'>
+        <div id="row">
+        <% for @kbrd in @kbrds %>
+            <div class="column">
+                <div class="chartContainer">
+                    <%= @kbrd.name %>
+                </div>
+            </div>
+        <% end %>
+        <% for @kbrd in @kbrds %>
+            <div class="column">
+                <div class="chartContainer">
+                    <%= @kbrd.name %>
+                </div>
+            </div>
+        <% end %>
+        </div>
+    </div>
 
     </body>
 </html>
