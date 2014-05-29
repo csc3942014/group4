@@ -3,10 +3,11 @@ class AnalyticsGeneralController < ApplicationController
       @kbrds = Keyboard.all;
       @ts = TestSuite.all;
       
-      ary = Array.new;
+
+      @mtx = [];
       for @kb in @kbrds
-          for @t in @ts
-              ary[@kb.id][@t.id] = TestSession.where("test_suite_id = @t.id AND keyboard_id = @kb.id");
+          for @t in @ts 
+              @mtx[@kb.id, @t.id] = TestSession.where("test_suite_id = @t.id AND keyboard_id = @kb.id").count;
           end
       end
   end
