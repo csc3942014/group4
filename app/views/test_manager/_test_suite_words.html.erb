@@ -17,21 +17,4 @@
         </tr>
     <% end %>
     
-    <tr>
-        <%= form_for @word do |f| %>
-        <td><%= f.text_field :word, :placeholder=>"Add a new word" %></td>
-            <td align="right">
-                
-                <%= button_to "Create", 
-                     { :controller => :words, :action=> :create }, 
-                     { :remote => true, :id => 'create_word' } 
-                 %>
-                
-            </td>
-        <% end %>
-    </tr>
-    
-    
-    
-    
 </table>

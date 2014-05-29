@@ -36,6 +36,21 @@ class WordsController < ApplicationController
       end
     end
   end
+    
+  def add_word
+    console.log("Step 1");
+      
+    # @word = Word.new(add_word_params)
+      
+    # console.log("Step 2");
+
+    # respond_to do |format|
+        # console.log("Step 3");
+        
+        # format.html { redirect_to @word, notice: 'Word was successfully created.' }
+        # format.json { render :show, status: :created, location: @word }
+    # end
+  end
 
   # PATCH/PUT /words/1
   # PATCH/PUT /words/1.json
@@ -70,5 +85,9 @@ class WordsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
       params.require(:word).permit(:word, :length, :consecutive_letters)
+    end
+    
+    def add_word_params
+      params.require(:word).permit(:word)
     end
 end
