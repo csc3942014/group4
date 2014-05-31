@@ -3,6 +3,8 @@ class AnalyticsGeneralController < ApplicationController
       @kbrds = Keyboard.all;
       @ts = TestSuite.all;
       
+      @isTrue = @i == 0;
+      
 
       @mtx = [];
       for @kb in @kbrds

@@ -9,7 +9,7 @@
     <body>
    
     <h1>Analytics</h1>
-    <h4>Data Overview</h4>
+    <h4>Application Overview</h4>
 
     <center>
         <nav class="segmented-button">
@@ -39,38 +39,39 @@
 
         
     <!-- For each keyboard in the database -->
-    <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:500px'>
-        <div id="row">
+    <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:570px'>
+    <div id="row">
         <% for @kbrd in @kbrds %>
-            <div class="column">
-                <div class="chartContainer">
-                    <h3><%= @kbrd.name %></h3>
-                    <br>
-                    <!-- <% for @t in @ts %> -->
-                        <!-- bar chart canvas element -->
-                        <canvas id="income" width="10" height="10"></canvas>
-                        <script>
-                            // bar chart data
-                            var barData = {
-                                labels : ["Test Suite 1","TS 2","Double Letters","TS 5","TS 6","TS 7"],
-                                datasets : [
-                                {
-                                    fillColor : "#48A497",
-                                    strokeColor : "#48A4D1",
-                                    data : [456,479,324,569,702,600]
-                                }
-                                ]
-                            }
-                            // get bar chart canvas
-                            var income = document.getElementById("income").getContext("2d");
-                            // draw bar chart
-                            new Chart(income).Bar(barData);
-                        </script>
-                    <!-- <% end %> -->
-                </div>
-            </div>
-        <% end %>
+        <!-- <div class="column"> -->
+        <div class="chartContainer">
+            <h3><%= @kbrd.name %></h3>
+            <br>
+            <center><h6>Number of tests completed</h6></center>
+            <!-- bar chart canvas element -->
+            <canvas id="thechart" width="70" height="96"></canvas>
+            <script>
+                // bar chart data
+                var barData = {
+                    labels : ["Test Suite 1","TS 2","Double Letters","TS 5","TS 6","TS 7"],
+                    datasets : [
+                    {
+                        fillColor : "#0B6121",
+                        strokeColor : "#48A4D1",
+                        data : [2,15,22,1,15,30]
+                    }
+                    ]
+                }
+                
+                // get bar chart canvas
+                var buyer = document.getElementById("thechart").getContext("2d");
+                // draw bar chart
+                new Chart(buyer).Bar(barData);
+            </script>
+            <br>
         </div>
+        <!-- </div> -->
+        <% end %>
+    </div>
     </div>
 
     </body>
