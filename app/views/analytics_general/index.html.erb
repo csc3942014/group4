@@ -7,6 +7,9 @@
     </head>
 
     <body>
+        <br><br>
+        <%= pie_chart @data5 %>
+        <%= bar_chart @data2, @options2 %>
    
     <h1>Analytics</h1>
     <h4>Application Overview</h4>
@@ -36,37 +39,32 @@
         });
     </script>
         
+        <% @kbrds.each do |kbrd| %>
+            <h3><%= kbrd.name %></h3>
+            <br>
+            <center><h6>Number of tests completed</h6></center>
+            <!-- bar chart canvas element -->
 
+            <!-- this is where the script originally went -->
+            <%= bar_chart @data2, @options2 %>
+            
+            <br>
+        <% end %>
         
     <!-- For each keyboard in the database -->
     <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:570px'>
     <div id="row">
-        <% for @kbrd in @kbrds %>
+        <% @kbrds.each do |kbrd| %>
         <!-- <div class="column"> -->
         <div class="chartContainer">
-            <h3><%= @kbrd.name %></h3>
+            <h3><%= kbrd.name %></h3>
             <br>
             <center><h6>Number of tests completed</h6></center>
             <!-- bar chart canvas element -->
-            <canvas id="thechart" width="70" height="96"></canvas>
-            <script>
-                // bar chart data
-                var barData = {
-                    labels : ["Test Suite 1","TS 2","Double Letters","TS 5","TS 6","TS 7"],
-                    datasets : [
-                    {
-                        fillColor : "#0B6121",
-                        strokeColor : "#48A4D1",
-                        data : [2,15,22,1,15,30]
-                    }
-                    ]
-                }
-                
-                // get bar chart canvas
-                var buyer = document.getElementById("thechart").getContext("2d");
-                // draw bar chart
-                new Chart(buyer).Bar(barData);
-            </script>
+
+            <!-- this is where the script originally went -->
+            <%= bar_chart @data[kbrd.name.to_s], @options[kbrd.name.to_s] %>
+            
             <br>
         </div>
         <!-- </div> -->
