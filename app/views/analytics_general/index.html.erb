@@ -1,32 +1,26 @@
-<!DOCTYPE html>
 <html>
-
     <head>
-        <title></title>
-        <script src='//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js'></script>
+        <!-- using google chart powered by chartkick -->
+        <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     </head>
-
     <body>
-        <br><br>
-        <%= pie_chart @data5 %>
-        <%= bar_chart @data2, @options2 %>
-   
-    <h1>Analytics</h1>
-    <h4>Application Overview</h4>
 
-    <center>
-        <nav class="segmented-button">
-            <input type="radio" name="seg-1" value="General" id="seg-General" checked>
-            <label for="seg-General" class="first">General</label>
-            <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific">
-            <label for="seg-Specific">Specific Tests</label>
-            <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
-            <label for="seg-Compare" class="last">Comparative</label>
-        </nav>
-    </center>
+        <h1>Analytics</h1>
+        <h4>Application Overview</h4>
 
-    <!-- Detect when a button on the segmented control is clicked -->
-    <script type="text/javascript">
+        <!-- Create the segmented navigation controls -->
+        <center>
+            <nav class="segmented-button">
+                <input type="radio" name="seg-1" value="General" id="seg-General" checked>
+                <label for="seg-General" class="first">General</label>
+                <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific">
+                <label for="seg-Specific">Specific Tests</label>
+                <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
+                <label for="seg-Compare" class="last">Comparative</label>
+            </nav>
+        </center>
+        <!-- Detect when a button on the segmented control is clicked -->
+        <script type="text/javascript">
         $("input[name=seg-2]").click(function(){
             window.location.href = '/analytics_specific/index';
         });
@@ -39,38 +33,35 @@
         });
     </script>
         
-        <% @kbrds.each do |kbrd| %>
-            <h3><%= kbrd.name %></h3>
-            <br>
-            <center><h6>Number of tests completed</h6></center>
-            <!-- bar chart canvas element -->
-
-            <!-- this is where the script originally went -->
-            <%= bar_chart @data2, @options2 %>
-            
-            <br>
-        <% end %>
-        
-    <!-- For each keyboard in the database -->
-    <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:570px'>
-    <div id="row">
-        <% @kbrds.each do |kbrd| %>
-        <!-- <div class="column"> -->
-        <div class="chartContainer">
-            <h3><%= kbrd.name %></h3>
-            <br>
-            <center><h6>Number of tests completed</h6></center>
-            <!-- bar chart canvas element -->
-
-            <!-- this is where the script originally went -->
-            <%= bar_chart @data[kbrd.name.to_s], @options[kbrd.name.to_s] %>
-            
-            <br>
+        <!-- Make a horizontally scrollable div to contain all of the chartContainers -->
+        <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:600px', id="scrollie">
+            <table class="ex1">
+            <% i = 0 %>
+            <!-- For each keyboard -->
+            <% @kbrds.each do |kbrd| %>
+                <td>
+                    <div class="chartContainer">
+                        <h3><%= kbrd.name %></h3>
+                        <br>
+                        <center><h6>Number of tests completed</h6></center>
+                        <!-- Create the chart -->
+                        <%= column_chart @mtx[i], colors: ["green", "blue"] %>
+                    </div>
+                </td>
+                <br>
+                <% i = i+1 %>
+            <% end %>
+    
+            </table>
+            <!-- For debugging/testing purposes, this displays what is in the general analytics matrix -->
+            <% @mtx.each do |mt| %>
+                <%= mt %>
+            <% end %>
         </div>
-        <!-- </div> -->
-        <% end %>
-    </div>
-    </div>
-
+        <script>
+            var objDiv = document.getElementById("scrollie");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        </script>
+ 
     </body>
 </html>

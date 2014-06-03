@@ -41,4 +41,4 @@ gem "twitter-bootstrap-rails", :git => "git://github.com/seyhunak/twitter-bootst
 
 gem 'devise'
 
-gem 'chartjs-ror'
+gem 'chartkick', '~> 1.2.4'
