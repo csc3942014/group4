@@ -40,3 +40,5 @@ gem "less-rails"
 gem "twitter-bootstrap-rails", :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "bootstrap3"
 
 gem 'devise'
+
+gem 'chartkick', '~> 1.2.4'
