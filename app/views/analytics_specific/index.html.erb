@@ -8,16 +8,36 @@
 <body>
 
     <h1>Analytics</h1>
-    <h4>View Specific Test Results</h4>
+    <script type="text/javascript">
+        
+        
+        
+        function(ka){
+            window.alert(pageMode);    
+        }
+        
+        function(ta){
+            window.alert(pageMode);  
+        }
+        
+        
+          
+    </script>
+    
+    <h4>View Specific Test Results <span id="pageIdText"></span></h4>
 
 
     <center>
         <nav class="segmented-button">
           <input type="radio" name="seg-1" value="General" id="seg-General">
           <label for="seg-General" class="first">General</label>
-          <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific" checked>
-          <label for="seg-Specific">Specific Tests</label>
-          <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
+          <input type="radio" name="seg-2" value="User" id="seg-User">
+          <label for="seg-User">Results by User</label>
+          <input type="radio" name="seg-3" value="Keyboard" id="seg-Keyboard">
+          <label for="seg-Keyboard">Results by Keyboard</label>
+          <input type="radio" name="seg-4" value="Test" id="seg-Test">
+          <label for="seg-Test">Results by Test</label>
+          <input type="radio" name="seg-5" value="Comparative" id="seg-Compare">
           <label for="seg-Compare" class="last">Comparative</label>
         </nav>
     </center>
@@ -27,26 +47,27 @@
         $("input[name=seg-1]").click(function(){
             window.location.href = '/analytics_general/index';
         });
-        $("input[name=seg-3]").click(function(){
+        $("input[name=seg-5]").click(function(){
             window.location.href = '/analytics_comparatif/index';
         });
-        $('.segmented-button label').click(function(evt){
-            evt.stopPropagation();
-            window.location.href = '/home_page/index';
+        $("input[name=seg-2]").click(function(setPageMode){
+            pageMode = "User";
+            document.getElementById("pageIdText").innerHTML="by User";;
+        });
+        $("input[name=seg-3]").click(function(KeyboardAnalysis){
+            pageMode = "Keyboard";
+            document.getElementById("pageIdText").innerHTML="by Keyboard";
+        });
+        $("input[name=seg-4]").click(function(TestAnalysis){
+            pageMode = "Test";
+            document.getElementById("pageIdText").innerHTML="by Test";
         });
     </script>
     <hr />
     
-    <center>
-        <nav class="segmented-button">
-          <input type="radio" name="seg-1" value="General" id="seg-General">
-          <label for="seg-General" class="first">By User</label>
-          <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific" checked>
-          <label for="seg-Specific">By Test Suite</label>
-          <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
-          <label for="seg-Compare" class="last">By Keyboard</label>
-        </nav>
-    </center>
+    <script type="text/javascript">   
+        if pageMode = "User"
+    </script>
     
     
     
