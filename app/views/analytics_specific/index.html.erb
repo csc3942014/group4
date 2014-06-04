@@ -10,7 +10,7 @@
     <h1>Analytics</h1>
     <h4>View Specific Test Results</h4>
 
-
+    <!-- display the nagivation segmented control -->
     <center>
         <nav class="segmented-button">
           <input type="radio" name="seg-1" value="General" id="seg-General">
@@ -22,7 +22,7 @@
         </nav>
     </center>
 
-
+    <!-- Detect when a navigation segmented is selected and navigate to that page -->
     <script type="text/javascript">
         $("input[name=seg-1]").click(function(){
             window.location.href = '/analytics_general/index';
@@ -30,11 +30,31 @@
         $("input[name=seg-3]").click(function(){
             window.location.href = '/analytics_comparatif/index';
         });
-        $('.segmented-button label').click(function(evt){
-            evt.stopPropagation();
-            window.location.href = '/home_page/index';
-        });
     </script>
     
+    <br>
+    <div class="left1">
+    <h4>Filter By:</h4>
+    
+    <!-- Create "Filter By:" segmented control -->
+        <table>
+            <td>
+            <tr><th>
+                <input id="Keyboard" type="button" value="Keyboard" onclick="loadKeyboardFilter()"/>
+            </th></tr>
+            <tr><th>
+                <input id="Test Suite" type="button" value="Test Suite" onclick="loadTestsuiteFilter();"/>
+            </th></tr>
+            <tr><th>
+                <input id="User" type="button" value="User" onclick="loadUserFilter();"/>
+            </th></tr>
+                </td>
+        </table>
+        
+
+    <div class="filterContainer">
+        <div class="filterTbl"></div>
+    </div>
+    </div>
 </body>
 </html>
