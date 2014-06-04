@@ -12,8 +12,8 @@ class HomePageController < ApplicationController
       #@is_an_admin = (person.admin?)
       @is_an_admin = true
 
-
-      
+      @kbrds = Keyboard.all;
+      @ts = TestSuite.all;
   end
     
   

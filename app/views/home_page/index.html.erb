@@ -32,34 +32,57 @@
 <br>
 
 <% if @is_an_admin %>
-<center>
-    <a href="/analytics_general/index"><img style="border:0;" src="/assets/ViewAnalyticsIcon.png" alt="View Analytics" width="175" height="175"></a>
-    <br><br>
-    <form action="/analytics_general/index"><button class="btn btn-primary" type="submit" >View Analytics</button></form>
-</center>
-<br>                                                                                                                                                
-<br>
-<br>
+    <div class="farLeft">
+        <div class="analyticsDashContainer">
+            <font color="white">
+            <h3>Keyboards: <%= @kbrds.count %></h3>
+            <hr width="62%">
+            <h3>Users: 6 active</h3><br><br>
+        </font>
+        <a href="/analytics_general/index"><img style="border:0;" src="/assets/ViewAnalyticsIcon.png" alt="View Analytics" width="175" height="175"></a>
+        <br><br><br><br>
+        <form action="/analytics_general/index"><button class="btn btn-xlarge btn-primary" type="submit" >View Analytics</button></form>
+        </div>
+    </div>
 
-<span>
-<div class="right">                                                                                                                                                
-    <a href="/test_manager/index"><img style="border:0;" src="/assets/ManageTestsIcon.png" alt="Manage User Attributes" width="175" height="175"></a> 
-</div>
-</span>
-<span>
-<div class="left">
-    <a href="/attributes"><img style="border:0;" src="/assets/UserAttributesIcon.png" alt="Manage User Attributes" width="175" height="175"></a>
-</div>
-</span>
-<br><br><br><br><br><br><br><br><br><br>
-<div class="right">
-    <form action="/test_manager/index"><button class="btn btn-primary" type="submit" >Manage Tests</button></form>
+    <div class="right">
+        <div class="othersDashContainer">
+            <br>
+            <!-- <div class="left"> -->
+            <table class="thisone">
+                <tr>
+                    <th><font color="white">
+                        <center>
+                            <h3>Test Suites: <%= @ts.count %></h3>
+                            <form action="/test_manager/index"><button class="btn btn-primary" type="submit" >Manage Tests</button></form>
+                        </center>
+                    </font></th>
+                    <th>
+                        <a href="/test_manager/index"><img style="border:0;" src="/assets/ManageTestsIcon.png" alt="Manage User Attributes" width="140" height="140"></a>
+                    </th>
+                </tr>
 
-</div>
-<div class="left">
-    <form action="/attributes"><button class="btn btn-primary" type="submit" >Manage User Attributes</button></form>
+                <tr><th><hr width="200%"></th></tr>
 
-</div>
+                <tr>
+                    <th>
+                        <center>
+                        <font color="white">    
+                            <h3>User Attributes: </h3>
+                            <form action="/attributes"><button class="btn btn-primary" type="submit" >Manage User Attributes</button></form>
+                        </font>
+                        </center>
+                    </th>
+                    <th>
+                        <a href="/attributes"><img style="border:0;" src="/assets/UserAttributesIcon.png" alt="Manage User Attributes" width="140" height="140"></a>
+                    </th>
+                    
+                </tr>
+            </table>
+            <!-- </div> -->
+        </div>
+    </div>
+
              
 <!-- add manage user attributes and manage tests buttons, they should be lower than analytics and on the same level as each other -->
 
