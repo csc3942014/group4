@@ -1,6 +1,8 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
+  respond_to :js
+    
   # GET /words
   # GET /words.json
   def index
@@ -37,19 +39,42 @@ class WordsController < ApplicationController
     end
   end
     
+    
+  def find_consucutive_letters(word)     
+      
+    consecutive_letters = 0
+      
+    for i in 0..word.length-1 do
+      j = 1
+      while word[i] == word[i+j] do
+        consecutive_letters+=1
+        if j >= word.length then
+          break
+        end
+        j+=1
+      end
+    end
+    
+   return consecutive_letters;
+  end
+    
   def add_word
-    console.log("Step 1");
       
-    # @word = Word.new(add_word_params)
-      
-    # console.log("Step 2");
+    word_text = word_params[:word]
+    word_length = word_text.length
+    word_consec = find_consucutive_letters(word_text)
+    
+    @word = Word.new(word: word_text, length: word_length, consecutive_letters: word_consec)
 
-    # respond_to do |format|
-        # console.log("Step 3");
-        
-        # format.html { redirect_to @word, notice: 'Word was successfully created.' }
-        # format.json { render :show, status: :created, location: @word }
-    # end
+    respond_to do |format|
+      if @word.save
+        format.html { redirect_to @word, notice: 'Word was successfully created.' }
+        format.json { render :show, status: :created, location: @word }
+      else
+        format.html { render :new }
+        format.json { render json: @word.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /words/1

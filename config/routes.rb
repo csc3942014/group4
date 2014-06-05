@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'landing_page/index',		        :as => :landing_page
     
+  post 'test_manager/reload_suites'
   post 'test_manager/reload_words'
   post 'word/add_word'
 
@@ -12,6 +13,14 @@ Rails.application.routes.draw do
   get 'analytics_specific/index', 	    :as => :analytics_specific
   get 'analytics_general/index', 	    :as => :analytics_general
   get 'home_page/index', 		        :as => :home_page
+    
+    class OnlyAjaxRequest
+        def matches?(request)
+            request.xhr?
+        end
+    end
+    
+    match 'words/add_word' => 'words#add_word', :via => [:post]
 
   resources :attributes
   resources :keyboards
