@@ -1,3 +1,20 @@
-<% @keyboard.each do |kb| %>
+<html>
+<head>
+    <!-- using google chart powered by chartkick -->
+    <script src="//www.google.com/jsapi"></script>
+</head>
+
+<!-- fill the pie chart hashmap -->
+<% keyboard.each do |kb| %>
     <h3><%= kb.name %></h3>
+    <!-- replace the hardcoded values for pie_chart with '(pcData)' -->
+    <div class="pieChartContainer">
+        <%= pie_chart('Correct' => 55, 'Incorrect' => 22) %>
+    </div>
+    <!-- replace the hardcoded values for column_chart with '(dcData)' -->
+    <div class="pieChartContainer">
+        <%= column_chart ({'0' => 0.0, '1' => 2.0, '2' => 5.0, '3' => 7.4, '4' => 10.0, '5' => 12.2, '6' => 15.0, '7' => 19.4, '8' => 24.2, '9' => 27.0, '10+' => 35.0}) %>
+    </div>
 <% end %>
+</html>
+
