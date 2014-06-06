@@ -1,14 +1,30 @@
 class AnalyticsGeneralController < ApplicationController
-  def index
+  def index 
+ 
+      #get all keyboards and test suites
       @kbrds = Keyboard.all;
       @ts = TestSuite.all;
-      
 
-      @mtx = [];
-      for @kb in @kbrds
-          for @t in @ts 
-              @mtx[@kb.id, @t.id] = TestSession.where("test_suite_id = @t.id AND keyboard_id = @kb.id").count;
+      #initialize the matrix that will store data necessary to generate all general analytics charts
+      @mtx = Array.new(@kbrds.count) {Array.new(5, 0.0)};
+      
+      #loop through each keyboard
+      i = 0 #counter used for index
+      for kb in @kbrds
+          x = 5
+          for t in @ts
+              #clear the first default item out of the matrix
+              if x == 5
+                  @mtx[i] = [];
+              end
+              #push to the array for this keyboard, the name of the test suite, and 
+              #the number of tests completed for this test suite and keyboard
+              @mtx[i].push([t.name.to_s, TestSession.where("test_suite_id = ? AND keyboard_id = ?", params[t.id], params[kb.id]).count]);
+              x = x + 1
           end
-      end
-  end
+          i = i+1
+      end   
+  end 
 end
+
+
