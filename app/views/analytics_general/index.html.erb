@@ -21,17 +21,17 @@
         </center>
         <!-- Detect when a button on the segmented control is clicked -->
         <script type="text/javascript">
-        $("input[name=seg-2]").click(function(){
-            window.location.href = '/analytics_specific/index';
-        });
-        $("input[name=seg-3]").click(function(){
-            window.location.href = '/analytics_comparatif/index';
-        });
-        $('.segmented-button label').click(function(evt){
-            evt.stopPropagation();
-            window.location.href = '/home_page/index';
-        });
-    </script>
+            $("input[name=seg-2]").click(function(){
+                window.location.href = '/analytics_specific/index';
+            });
+            $("input[name=seg-3]").click(function(){
+                window.location.href = '/analytics_comparatif/index';
+            });
+            $('.segmented-button label').click(function(evt){
+                evt.stopPropagation();
+                window.location.href = '/home_page/index';
+            });
+        </script>
         
         <!-- Make a horizontally scrollable div to contain all of the chartContainers -->
         <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:600px', id="scrollie">

@@ -1,3 +1,4 @@
+
 function loadKeyboardFilter()
 {
     $( ".filterTbl" ).load( "/analytics_specific/reload_keyboards", {});

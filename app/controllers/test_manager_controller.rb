@@ -3,10 +3,14 @@ class TestManagerController < ApplicationController
       @test_suites = TestSuite.all
       @words = Word.all
   end
-    
+
+  def reload_suites
+      @test_suites = TestSuite.all
+
+      render :partial => "test_suites", object: @test_suites
+  end
+
   def reload_words
-      logger.debug "elo"
-      
       @ids_query = TestSuiteWord.where('test_suite_id = ?', params[:test_suite_id].to_i)
       
       @word_ids = Array.new
