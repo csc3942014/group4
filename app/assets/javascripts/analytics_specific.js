@@ -13,17 +13,17 @@ function loadUserFilter()
     $( ".filterTbl" ).load( "/analytics_specific/reload_users", {});
 }
 
-function loadKeyboardData(row, kbrdId)
+
+function loadKeyboardData(row, kbId)
 {
     setSelectedRow(row);
     
-    //$( ".wordsTbl" ).load( "/test_manager/reload_words", { test_suite_id: suiteId } );
-    
+    $( ".mainViewContainer" ).load( "/analytics_specific/loadup_keyboard", {keyboard_id : kbId});
 }
 
 function cleanRowStyles()
 {
-    var table = document.getElementById("theTbl");
+    var table = document.getElementById("tsTbl");
     for (var i = 0, row; row = table.rows[i]; i++) {
        $(row).removeClass('success'); 
     }

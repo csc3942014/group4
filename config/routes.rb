@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'analytics_specific/reload_keyboards'
   post 'analytics_specific/reload_testsuites'
   post 'analytics_specific/reload_users'
+  post 'analytics_specific/loadup_keyboard'
   post 'word/add_word'
 
   get 'test_manager/index',		        :as => :test_manager
