@@ -143,7 +143,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  chartkick (~> 1.2.4)
+  chartkick
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)
