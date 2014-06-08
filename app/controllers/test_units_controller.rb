@@ -5,6 +5,13 @@ class TestUnitsController < ApplicationController
   # GET /test_units.json
   def index
     @test_units = TestUnit.all
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @test_units.to_csv }
+      format.xls { send_data @test_units.to_csv(col_sep: "\t") }
+    end
+      
   end
 
   # GET /test_units/1
