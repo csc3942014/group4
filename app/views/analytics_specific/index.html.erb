@@ -1,16 +1,10 @@
-<!DOCTYPE HTML>
-<!-- analytics_specific page -->
-<html>
-<head>
-    <title>AR UTARS Analytics  |  Specific</title>
-</head>
 
-<body>
-
-    <h1>Analytics</h1>
+<h1>Analytics</h1>
     <h4>View Specific Test Results</h4>
 
+            
 
+    <!-- display the nagivation segmented control -->
     <center>
         <nav class="segmented-button">
           <input type="radio" name="seg-1" value="General" id="seg-General">
@@ -22,7 +16,7 @@
         </nav>
     </center>
 
-
+    <!-- Detect when a navigation segmented is selected and navigate to that page -->
     <script type="text/javascript">
         $("input[name=seg-1]").click(function(){
             window.location.href = '/analytics_general/index';
@@ -30,11 +24,61 @@
         $("input[name=seg-3]").click(function(){
             window.location.href = '/analytics_comparatif/index';
         });
-        $('.segmented-button label').click(function(evt){
-            evt.stopPropagation();
-            window.location.href = '/home_page/index';
-        });
     </script>
     
-</body>
-</html>
+    <br>
+<table>
+    <tr>
+        <td>
+            <div class="left1">
+            <h4>Filter By:</h4>
+            </div>
+        </td>   
+        <th></th>
+        <tr></tr><tr></tr>
+        <tr><td><h4>  &nbsp; </h4></td></tr>
+        
+    <tr>
+    <!-- Create "Filter By:" segmented control -->
+    <td>
+        <tr><th>
+            <input id="Keyboard" type="button" value="Keyboard" onclick="loadKeyboardFilter();"/>
+        </th></tr>
+        <tr><th>
+            <input id="Test Suite" type="button" value="Test Suite" onclick="loadTestsuiteFilter();"/>
+        </th></tr>
+        <tr><th>
+            <input id="User" type="button" value="User" onclick="loadUserFilter();"/>
+        </th></tr>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <tr>
+            <td>
+                <div class="right1">
+                    <div class ="dataContainer">
+                        <div class="mainViewContainer"></div>
+                    </div>
+                </div>
+                
+            </td>
+            
+        </tr>
+        <tr>
+            
+            <td>
+                <div class="left1">
+                    <div class="filterContainer">
+                        <div class="filterTbl"></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        
+    </td>
+    </tr>
+
+
+
+

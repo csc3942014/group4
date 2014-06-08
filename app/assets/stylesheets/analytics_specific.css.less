@@ -1,3 +1,163 @@
 // Place all the styles related to the AnalyticsSpecific controller here.
 // They will automatically be included in application.css.
 // You can use Less here: http://lesscss.org/
+
+
+.filterContainer
+{
+  border-style:         solid;                  
+  border-color:         green;
+  width:                225px;
+  height:               345px;
+  text-align:           left;
+  margin:               auto;
+  margin-top:           50px;
+  /* background-color: rgba(0,0,0,.2); */
+  padding-bottom:       0px;
+  padding-top:          0px;
+  padding-left:         15px;
+  border-radius:        10px;
+  /* box-shadow: 20px 30px 30px silver; */
+}
+
+.dataContainer
+{
+  border-style:         solid;                  
+  border-color:         green;
+  width:                1000px;
+  height:               850px;
+  text-align:           left;
+  margin:               auto;
+  margin-top:           50px;
+  /* background-color: rgba(0,0,0,.2); */
+  padding-bottom:       0px;
+  padding-top:          0px;
+  padding-left:         15px;
+  border-radius:        10px;
+  /* box-shadow: 20px 30px 30px silver; */
+}
+
+.pieChartContainer
+{
+
+  width:                450px;
+  height:               350px;
+  text-align:           left;
+  margin:               auto;
+  margin-top:           50px;
+  /* background-color: rgba(0,0,0,.2); */
+  padding-bottom:       0px;
+  padding-top:          0px;
+  /* box-shadow: 20px 30px 30px silver; */
+}
+
+
+.durationChartContainer
+{
+  width:                510px;
+  height:               350px;
+  text-align:           left;
+  margin:               auto;
+  margin-top:           50px;
+  /* background-color: rgba(0,0,0,.2); */
+  padding-bottom:       0px;
+  padding-top:          0px;
+  padding-left:         15px;
+  border-radius:        10px;
+  /* box-shadow: 20px 30px 30px silver; */
+}
+
+.userPerceptionsContainer
+{
+  border-style:         solid;                  
+  border-color:         green;
+  width:                760px;
+  height:               330px;
+  text-align:           left;
+  margin:               auto;
+  margin-top:           50px;
+  /* background-color: rgba(0,0,0,.2); */
+  padding-bottom:       0px;
+  padding-top:          0px;
+  padding-left:         15px;
+  border-radius:        10px;
+  /* box-shadow: 20px 30px 30px silver; */
+}
+
+table.thisone
+{
+    // cellpadding
+    th { padding: 1px; }
+    td { padding: 1px; }
+}
+
+table.two{
+    border-collapse: separate;
+    border-spacing: 85px 7px;
+    th { padding: 1px; }
+    td { padding: 8px; }
+}
+
+.left1 {
+    float: positioned;
+    position: absolute;
+    margin: 2px 10px;
+    left: 5%;
+    display: inline;
+}
+
+.right1 {
+    float: positioned;
+    position: absolute;
+    margin: 2px 10px;
+    left: 24%;
+    display: inline;
+}
+
+.right2 {
+    float: positioned;
+    position: top;
+    margin: 2px 10px;
+    left: 80%;
+    display: inline;
+}
+
+.userPAlign {
+    float: positioned;
+    position: absolute;
+    margin: 2px 10px;
+    left: 13%;
+    display: inline;
+}
+
+.chevron {
+    display:inline-block;
+    width: .5em;
+    height: .8em;
+    position:relative;
+}
+.chevron:before,
+.chevron:after {
+    display:block;
+    content:"";
+    width:0;
+    height:0em;
+    border-style:solid;
+    position:absolute;
+}
+.chevron:before {
+    right:0;
+    border-width:.4em 0 .4em .4em;
+    border-color:transparent transparent transparent green;    
+}
+.chevron:after {
+    left:0;
+    border-width:.4em 0 .4em .4em;
+    border-color:transparent transparent transparent #fff;    
+}
+.chevron.skinny {
+    width:.4em;
+}
+.chevron.fat {
+    width:.6em;
+}
