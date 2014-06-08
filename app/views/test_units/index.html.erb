@@ -25,8 +25,8 @@
         <td><%= test_unit.start_time %></td>
         <td><%= test_unit.end_time %></td>
         <td><%= test_unit.num_backspace %></td>
-        <td><%=l test_unit.created_at %></td>
-        <td><%=l test_unit.input %></td>
+        <td><%= test_unit.created_at %></td>
+        <td><%= test_unit.input %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_test_unit_path(test_unit), :class => 'btn btn-default btn-xs' %>

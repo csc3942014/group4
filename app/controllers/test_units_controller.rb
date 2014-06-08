@@ -69,6 +69,6 @@ class TestUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_unit_params
-      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time)
+      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time, :num_backspace)
     end
 end
