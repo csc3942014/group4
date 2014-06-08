@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'landing_page/index',		        :as => :landing_page
     
   post 'test_manager/reload_words'
-
+  match 'test_sessions/setup' => 'test_sessions#setup', :via => [:post]
+  
   get 'test_manager/index',		        :as => :test_manager
   get 'testing/index', 			        :as => :testing
   get 'test_setup/index', 		        :as => :test_setup
