@@ -1,5 +1,6 @@
 class TestSessionsController < ApplicationController
   before_action :set_test_session, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token  
 
   # GET /test_sessions
   # GET /test_sessions.json
@@ -27,6 +28,30 @@ class TestSessionsController < ApplicationController
     @test_session = TestSession.new(test_session_params)
 
     respond_to do |format|
+      if @test_session.save
+        format.html { redirect_to @test_session, notice: 'Test session was successfully created.' }
+        format.json { render :show, status: :created, location: @test_session }
+      else
+        format.html { render :new }
+        format.json { render json: @test_session.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+    
+  # POST /test_sessions_setup
+  # POST /test_sessions_setup.json
+  def setup
+      
+      keyboard_id = setup_params[:keyboard_id]
+      test_suite_id = setup_params[:test_suite_id]
+      user_id = 1 #current_user
+      
+      @test_session = TestSession.new( keyboard_id: keyboard_id, 
+                                       test_suite_id: test_suite_id,
+                                       user_id: user_id
+                                     ) 
+      
+      respond_to do |format|
       if @test_session.save
         format.html { redirect_to @test_session, notice: 'Test session was successfully created.' }
         format.json { render :show, status: :created, location: @test_session }
@@ -69,6 +94,11 @@ class TestSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_session_params
-      params.require(:test_session).permit(:user_id, :test_number, :start_time, :end_time, :ease_ranking, :fun_ranking, :accuracy_ranking, :test_suite_id, :test_unit_id)
+      params.require(:test_session).permit(:user_id, :start_time, :end_time, :ease_ranking, :fun_ranking, :accuracy_ranking, :test_suite_id, :keyboard_id)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def setup_params
+        params.require(:test_session).permit(:keyboard_id, :test_suite_id)
     end
 end

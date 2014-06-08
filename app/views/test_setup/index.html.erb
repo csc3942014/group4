@@ -12,11 +12,11 @@ location = <!DOCTYPE html>
             <p><center><h4>Select keyboard to test</h4></center></p>
             <p>
                 <center>
-                    <select>
+                    <select id="keyboard">
                         <!-- show all keyboard options -->
                         <!-- the following four hard-coded values are place holders -->
                         <% for @kbrd in @kbrds %>
-                            <option value = @kbrd.name><%= @kbrd.name %></option>
+                            <option value="<%= @kbrd.name %>"><%= @kbrd.name %></option>
                         <% end %>
                     </select>
                 </center>
@@ -25,17 +25,34 @@ location = <!DOCTYPE html>
             <p>
                 <center>
                     <h4>Select Test Suite</h4>
-                    <select>
+                    <select id="suite">
                         <!-- show all test suites -->
                         <% for @testsuite in @ts %>
-                        <option value = @testsuite.name><%= @testsuite.name %></option>
+                        <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
                         <% end %>
                     </select>
                     <br><br>
-                    <form action="/testing/index"><button class="btn btn-primary" type="submit" >Start Test</button></form>
+                    <form action="/testing/index?k=<%= @kbrd.name %>&p=test"><button id="btnSetup" class="btn btn-primary" type="submit" >Start Test</button></form>
                 </center>
             </p>
         </div>
+
+        <script>
+        
+        $('form').submit( function(e) {
+        
+            e.preventDefault();
+            var keyboard = $('#keyboard').val();
+            var script = 'StandardKeyboard';
+            if(keyboard != 'Standard') {
+                script = 'PeripheralKeyboard'
+            }
+            window.location.href = "/testing/index?k=" + script + "&p=" + $('#suite').val();
+
+        });
+
+        </script>
+
     </body>   
 </html>
 
