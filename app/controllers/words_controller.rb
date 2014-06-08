@@ -64,7 +64,7 @@ class WordsController < ApplicationController
     word_length = word_text.length
     word_consec = find_consucutive_letters(word_text)
     
-    @word = Word.new(word: word_text, length: word_length, consecutive_letters: word_consec)
+    @word = Word.new(word: word_params[:word_text], length: word_length, consecutive_letters: word_consec)
 
     respond_to do |format|
       if @word.save
