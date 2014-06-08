@@ -7,6 +7,10 @@ function reloadTestSuites()
 }
 $(document).ready(function(){
     reloadTestSuites();
+
+     $('#new_test_suite').bind('ajax:success', function(evt, data, status, xhr){
+        reloadTestSuites();
+      });
 });
 
 //
