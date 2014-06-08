@@ -11,15 +11,32 @@ $(document).ready(function(){
      $('#new_test_suite').bind('ajax:success', function(evt, data, status, xhr){
         reloadTestSuites();
       });
+    
+    $('#new_word').bind('ajax:success', function(evt, data, status, xhr){
+        reloadWords();
+      });
 });
 
 //
 // Loading Test Suite WORDS
 //
-function loadSuiteWords(row, suiteId)
+var selectedSuite = 1;
+
+function getSelectedSuite()
 {
+    return selectedSuite;
+}
+function reloadWords()
+{
+    $( ".wordsTbl" ).load( "/test_manager/reload_words", { test_suite_id: selectedSuite } );
+}
+
+function loadSuiteWords(row, suiteId)
+{    
     setSelectedRow(row);
-    $( ".wordsTbl" ).load( "/test_manager/reload_words", { test_suite_id: suiteId } );
+    selectedSuite = suiteId;
+    
+    reloadWords();
 }
 function cleanRowStyles()
 {

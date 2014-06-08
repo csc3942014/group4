@@ -23,9 +23,10 @@
         
         <td width="4%">&nbsp;</td>
         
-        <%= form_for Word.new, url: {controller: "words", action: "add_word"}, remote: true do |f| %>
+        <%= form_for Word.new, url: {controller: "words", action: "add_word_suite"}, remote: true do |f| %>
             <td>
                 <%= f.text_field :word, :class => 'form-control eightyeight', :placeholder=>"Add a new word" %>
+                <%= hidden_field_tag(:test_suite_id, 1) %>
                 <%= f.submit "Add", :class => 'btn btn-primary rightb' %>
             </td>
         <% end %>

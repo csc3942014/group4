@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   post 'test_manager/reload_suites'
   post 'test_manager/reload_words'
+  post 'test_manager/delete_word'
 
   get 'test_manager/index',		        :as => :test_manager
   get 'testing/index', 			        :as => :testing
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     end
     
   match 'words/add_word' => 'words#add_word', :via => [:post]
+  match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
   match 'test_sessions/setup' => 'test_sessions#setup', :via => [:post]
 
   resources :attributes

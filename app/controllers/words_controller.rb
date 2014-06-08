@@ -60,11 +60,11 @@ class WordsController < ApplicationController
     
   def add_word
       
-    word_text = word_params[:word]
+    word_text = word_params[:word_text]
     word_length = word_text.length
     word_consec = find_consucutive_letters(word_text)
     
-    @word = Word.new(word: word_params[:word_text], length: word_length, consecutive_letters: word_consec)
+    @word = Word.new(word: word_text, length: word_length, consecutive_letters: word_consec)
 
     respond_to do |format|
       if @word.save
@@ -75,6 +75,26 @@ class WordsController < ApplicationController
         format.json { render json: @word.errors, status: :unprocessable_entity }
       end
     end
+  end
+    
+  def add_word_suite
+      
+    word_text = word_suite_params[:word]
+      
+   if Word.exists?(:word => word_text) then
+       @word = Word.find_by_word(word_text)
+   else
+        word_length = word_text.length
+        word_consec = find_consucutive_letters(word_text)
+
+        @word = Word.new(word: word_text, length: word_length, consecutive_letters: word_consec)
+        @word.save
+    end
+        
+    @test_suite_word = TestSuiteWord.new(test_suite_id: 1, word_id: @word.id)
+    @test_suite_word.save
+    
+    render json: { test: @test_suite_word.id }
   end
 
   # PATCH/PUT /words/1
@@ -112,7 +132,7 @@ class WordsController < ApplicationController
       params.require(:word).permit(:word, :length, :consecutive_letters)
     end
     
-    def add_word_params
-      params.require(:word).permit(:word)
+    def word_suite_params
+        params.require(:word).permit(:word, :test_suite_id)
     end
 end

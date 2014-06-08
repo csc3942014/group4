@@ -1,7 +1,7 @@
 
 <script>
     $(document).ready(function(){
-        $('a.remote-delete').click(function() {
+        $('a.remote-delete-suites').click(function() {
             $.post(this.href, { _method: 'delete' }, null, "script");
             reloadTestSuites();
             return false;
@@ -23,7 +23,7 @@
                                             test_suite_path(test_suite),
                                             :method => :delete,
                                             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                                            :class => 'btn btn-danger btn-xs remote-delete' %>
+                                            :class => 'btn btn-danger btn-xs remote-delete-suites' %>
             </td>
         </tr>
     <% end %>
