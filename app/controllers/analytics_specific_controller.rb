@@ -31,18 +31,16 @@ class AnalyticsSpecificController < ApplicationController
       @pieChartData = {'Correct' => 0, 'Incorrect' => 0}
       @durationChartData = {'0' => 0.0, '1' => 0.0, '2' => 0.0, '3' => 0.0, '4' => 0.0, '5' => 0.0, '6' => 0.0, '7' => 0.0, '8' => 0.0, '9' => 0.0, '10+' => 0.0}
       @durationChartFrequency = {'0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0, '7' => 0, '8' => 0, '9' => 0, '10+' => 0}
-      @userPercepData = [0,0,0]
-      @userPercepFrequency = [0,0,0]
+      @userPercepData = ['accuracy' => 0, 'ease' => 0, 'fun' => 0]
+      userPercepFrequency = 0
       
       #generate chart data
       @testSessions.each do |tSess|
           #get user perception data from each test session
-          @userPercepData[0] += tSess.accuracy_ranking
-          @userPercepData[1] += tSess.ease_ranking
-          @userPercepData[2] += tSess.fun_ranking
-          @userPercepFrequency[0] += 1
-          @userPercepFrequency[1] += 1
-          @userPercepFrequency[2] += 1
+          @userPercepData['accuracy'] += tSess.accuracy_ranking
+          @userPercepData['ease'] += tSess.ease_ranking
+          @userPercepData['fun'] += tSess.fun_ranking
+          userPercepFrequency += 1
           
           #get all the test units for this particular test session
           @allTU = TestUnit.where('test_session_id = ?', tSess.id)
@@ -72,11 +70,25 @@ class AnalyticsSpecificController < ApplicationController
       @durationChartData.each do |key, duration|
           @durationChartData[key] = ( @durationChartData[key] / @durationChartFrequency[key] )
       end
+
+      #turn totals into averages for the user perception rankings (if any exist)
+      if userPercepFrequency > 0 
+          @userPercepData.each do |key, total| 
+              @userPercepData[key] = ( @userPercepData[key] / userPercepFrequency )
+          end
+      end
       
-      #turn user perception rankings into averages
-     
       
       render :partial => "open_keyboard_stats", :locals => { :pcData => @pieChartData, :keyboard => @keyboard, :dcData => @durationChartData } 
+  end
+    
+  def loadup_user
+      @user = User.where('id = ?', params[:user_id].to_i)
+      @userAttributes = UserAttribute.where('user = ?', params[:user_id].to_i)
+      @allTestSessions = TestSession.where('user_id = ?', params[:user_id].to_i)
+      
+    
+      render :partial => "open_user_stats", :locals => { :user => @user, :allTests => @allTestSessions, :userAttributes => @userAttributes }
   end
 
 end
