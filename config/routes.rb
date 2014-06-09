@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
 
   get 'landing_page/index',		        :as => :landing_page
-    
-  post 'test_manager/reload_suites'
-  post 'test_manager/reload_words'
+
   post 'analytics_specific/reload_keyboards'
   post 'analytics_specific/reload_testsuites'
   post 'analytics_specific/reload_users'
   post 'analytics_specific/loadup_keyboard'
+<<<<<<< HEAD
   post 'analytics_specific/loadup_user'
   post 'word/add_word'
+=======
+  
+  post 'test_manager/reload_suites'
+  post 'test_manager/reload_words'
+  post 'test_manager/delete_word'
+>>>>>>> babaf1213c37a884c6a3e41f0e91bf1651cf9722
 
   get 'test_manager/index',		        :as => :test_manager
   get 'testing/index', 			        :as => :testing
@@ -26,6 +31,8 @@ Rails.application.routes.draw do
     end
     
   match 'words/add_word' => 'words#add_word', :via => [:post]
+  match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
+  match 'test_sessions/setup' => 'test_sessions#setup', :via => [:post]
 
   resources :attributes
   resources :keyboards

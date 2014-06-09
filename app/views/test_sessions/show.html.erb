@@ -6,8 +6,6 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @test_session.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:test_number) %>:</strong></dt>
-  <dd><%= @test_session.test_number %></dd>
   <dt><strong><%= model_class.human_attribute_name(:ease_ranking) %>:</strong></dt>
   <dd><%= @test_session.ease_ranking %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fun_ranking) %>:</strong></dt>
@@ -17,9 +15,8 @@
   <dt><strong><%= model_class.human_attribute_name(:test_suite_id) %>:</strong></dt>
   <dd><%= @test_session.test_suite_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:test_unit_id) %>:</strong></dt>
-  <dd><%= @test_session.test_unit_id %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:keyboad_id) %>:</strong></dt>
-  <dd><%= @test_session.keyboad_id %></dd>
+    <dd><%= @test_session.keyboard_id %></dd>
+    
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

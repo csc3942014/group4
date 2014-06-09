@@ -5,6 +5,13 @@ class TestUnitsController < ApplicationController
   # GET /test_units.json
   def index
     @test_units = TestUnit.all
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @test_units.to_csv }
+      format.xls { send_data @test_units.to_csv(col_sep: "\t") }
+    end
+      
   end
 
   # GET /test_units/1
@@ -69,6 +76,6 @@ class TestUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_unit_params
-      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time)
+      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time, :num_backspace)
     end
 end
