@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   post 'analytics_specific/reload_testsuites'
   post 'analytics_specific/reload_users'
   post 'analytics_specific/loadup_keyboard'
+  post 'analytics_specific/loadup_user'
+  post 'word/add_word'
+
   
   post 'test_manager/reload_suites'
   post 'test_manager/reload_words'
   post 'test_manager/delete_word'
+
 
   get 'test_manager/index',		        :as => :test_manager
   get 'testing/index', 			        :as => :testing
