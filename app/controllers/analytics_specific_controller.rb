@@ -31,16 +31,20 @@ class AnalyticsSpecificController < ApplicationController
       @pieChartData = {'Correct' => 0, 'Incorrect' => 0}
       @durationChartData = {'0' => 0.0, '1' => 0.0, '2' => 0.0, '3' => 0.0, '4' => 0.0, '5' => 0.0, '6' => 0.0, '7' => 0.0, '8' => 0.0, '9' => 0.0, '10+' => 0.0}
       @durationChartFrequency = {'0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0, '7' => 0, '8' => 0, '9' => 0, '10+' => 0}
-      @userPercepData = ['accuracy' => 0, 'ease' => 0, 'fun' => 0]
+      @userPercepData = {'accuracy' => 0, 'ease' => 0, 'fun' => 0}
       userPercepFrequency = 0
+   
+      logger.debug "Test Sessions: #{@testSessions}"
       
       #generate chart data
       @testSessions.each do |tSess|
+          
           #get user perception data from each test session
           @userPercepData['accuracy'] += tSess.accuracy_ranking
           @userPercepData['ease'] += tSess.ease_ranking
           @userPercepData['fun'] += tSess.fun_ranking
           userPercepFrequency += 1
+          
           
           #get all the test units for this particular test session
           @allTU = TestUnit.where('test_session_id = ?', tSess.id)
@@ -79,7 +83,7 @@ class AnalyticsSpecificController < ApplicationController
       end
       
       
-      render :partial => "open_keyboard_stats", :locals => { :pcData => @pieChartData, :keyboard => @keyboard, :dcData => @durationChartData } 
+      render :partial => "open_keyboard_stats", :locals => { :pcData => @pieChartData, :keyboard => @keyboard, :dcData => @durationChartData, :userPerceptions => @userPercepData } 
   end
     
   def loadup_user

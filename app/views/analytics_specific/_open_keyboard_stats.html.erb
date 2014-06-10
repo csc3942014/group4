@@ -4,26 +4,24 @@
     <script src="//www.google.com/jsapi"></script>
 </head>
     
-    
-
-<!-- fill the pie chart hashmap -->
+<!-- fill the dashboard widgets -->
 <% keyboard.each do |kb| %>
     <h3><%= kb.name %> Keyboard</h3>
     <table>
         <tr>
             <td>
-                <!-- replace the hardcoded values for column_chart with '(dcData)' -->
+                <!-- Create the word duration chart -->
                 <div class="durationChartContainer">
                     <center><h5>Average Typing Duration (in seconds)</h5></center>
-                    <%= column_chart ({'1' => 2.0, '2' => 5.0, '3' => 7.4, '4' => 10.0, '5' => 12.2, '6' => 15.0, '7' => 19.4, '8' => 24.2, '9' => 27.0, '10+' => 35.0}) %>
+                    <%= column_chart (dcData) %>
                     <center><h6>Number of Letters in Word</h6></center>
                 </div>
             </td>
             <td>
-                <!-- replace the hardcoded values for pie_chart with '(pcData)' -->
+                <!-- Create the Correctness pie chart -->
                 <div class="pieChartContainer">
                     <center><h5>Correct Vs. Incorrect User Input</h5></center>
-                    <%= pie_chart('Correct' => 55, 'Incorrect' => 22) %>
+                    <%= pie_chart(pcData) %>
                 </div>
             </td>
         </tr>
@@ -31,6 +29,7 @@
     <table>
         <tr>
             <td>
+                <!-- Create the user perceptions container and fill it -->
                 <div class="userPAlign">
                     <div class="userPerceptionsContainer">
                         <center><h3>Average User Perceptions</h3></center>
@@ -65,13 +64,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <center><h4>4 / 10</h4></center>
+                                        <center><h4><%= userPerceptions['accuracy'] %> / 10</h4></center>
                                     </td>
                                     <td>
-                                        <center><h4>4 / 10</h4></center>
+                                        <center><h4><%= userPerceptions['ease'] %> / 10</h4></center>
                                     </td>
                                     <td>
-                                        <center><h4>4 / 10</h4></center>
+                                        <center><h4><%= userPerceptions['fun'] %> / 10</h4></center>
                                     </td>
                                 </tr>
                             </table>
