@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608194337) do
+ActiveRecord::Schema.define(version: 20140610085559) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20140608194337) do
 
   create_table "coordinates", force: true do |t|
     t.integer  "word_id"
-    t.decimal  "x_coordinate", precision: 10, scale: 0
-    t.decimal  "y_coordinate", precision: 10, scale: 0
+    t.decimal  "x_coordinate",  precision: 10, scale: 0
+    t.decimal  "y_coordinate",  precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "test_suite_id"
   end
 
   create_table "keyboards", force: true do |t|
