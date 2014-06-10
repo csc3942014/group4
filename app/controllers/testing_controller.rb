@@ -1,10 +1,11 @@
 class TestingController < ApplicationController
   
     def index
-      @test_suites = TestSuite.all
-      @words = Word.all
         
       @keyboards = Keyboard.all
+      @test_suites = TestSuite.all
+      @words = Word.all
+      
     end
     
 end

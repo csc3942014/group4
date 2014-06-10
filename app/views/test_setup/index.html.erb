@@ -15,8 +15,8 @@ location = <!DOCTYPE html>
                     <select id="keyboard">
                         <!-- show all keyboard options -->
                         <!-- the following four hard-coded values are place holders -->
-                        <% for @kbrd in @kbrds %>
-                            <option value="<%= @kbrd.name %>"><%= @kbrd.name %></option>
+                        <% for @keyboard in @keyboards %>
+                            <option value="<%= @keyboard.name %>"><%= @keyboard.name %></option>
                         <% end %>
                     </select>
                 </center>
@@ -27,12 +27,12 @@ location = <!DOCTYPE html>
                     <h4>Select Test Suite</h4>
                     <select id="suite">
                         <!-- show all test suites -->
-                        <% for @testsuite in @ts %>
+                        <% for @testsuite in @test_suites %>
                         <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
                         <% end %>
                     </select>
                     <br><br>
-                    <form action="/testing/index?k=<%= @kbrd.name %>&p=test"><button id="btnSetup" class="btn btn-primary" type="submit" >Start Test</button></form>
+                    <form action="/testing/index"><button id="btnSetup" class="btn btn-primary" type="submit" >Start Test</button></form>
                 </center>
             </p>
         </div>
@@ -50,8 +50,7 @@ location = <!DOCTYPE html>
             window.location.href = "/testing/index?k=" + script + "&p=" + $('#suite').val();
 
         });
-
-        </script>
+        </script> 
 
     </body>   
 </html>

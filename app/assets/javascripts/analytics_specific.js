@@ -14,7 +14,6 @@ function loadUserFilter()
     $( ".filterTbl" ).load( "/analytics_specific/reload_users", {});
 }
 
-
 function loadKeyboardData(row, kbId)
 {
     setSelectedRow(row);
