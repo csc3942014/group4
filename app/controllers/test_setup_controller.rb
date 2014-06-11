@@ -3,6 +3,4 @@ class TestSetupController < ApplicationController
       @keyboards = Keyboard.all
       @test_suites = TestSuite.all 
   end
-    
-    
 end

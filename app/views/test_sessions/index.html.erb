@@ -11,9 +11,9 @@
       <th><%= model_class.human_attribute_name(:fun_ranking) %></th>
       <th><%= model_class.human_attribute_name(:accuracy_ranking) %></th>
       <th><%= model_class.human_attribute_name(:test_suite_id) %></th>
-        <th><%= model_class.human_attribute_name(:keyboard_id) %></th>
-      
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:keyboard_id) %></th>
+      <th><%= model_class.human_attribute_name(:start_time) %></th>
+      <th><%= model_class.human_attribute_name(:end_time) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -26,9 +26,9 @@
         <td><%= test_session.fun_ranking %></td>
         <td><%= test_session.accuracy_ranking %></td>
         <td><%= test_session.test_suite_id %></td>
-          <td><%= test_session.keyboard_id %></td>
-          
-        <td><%=l test_session.created_at %></td>
+        <td><%= test_session.keyboard_id %></td>
+        <td><%= test_session.start_time %></td>
+        <td><%= test_session.end_time %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_test_session_path(test_session), :class => 'btn btn-default btn-xs' %>
