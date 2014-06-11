@@ -7,7 +7,8 @@ $(document).on 'page:change', ->
 #
 init = () ->
     reloadTestSuites()
-        
+    overrideAddWordForm()
+    
     $('#new_test_suite').bind('ajax:success', (evt, data, status, xhr) -> reloadTestSuites())
     $('#new_word').bind('ajax:success', (evt, data, status, xhr) -> reloadWords())
 
@@ -26,6 +27,28 @@ selectedSuite = 1
     selectedSuite = suiteId
     reloadWords()
     
+#
+# Adding a word
+# 
+overrideAddWordForm = () ->
+    $('#addWordForm').submit( () ->  
+        valuesToSubmit = $(this).serialize();
+        valuesToSubmit = valuesToSubmit.substring(0, valuesToSubmit.length - 1)
+        valuesToSubmit+=selectedSuite;
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type:'post',
+            data: valuesToSubmit,
+            dataType: "JSON"
+        }).success( (json) ->
+            reloadWords();
+        );
+        
+        return false;
+    );
+
+
 #
 # General
 #
