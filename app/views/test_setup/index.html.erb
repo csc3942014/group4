@@ -1,58 +1,51 @@
-location = <!DOCTYPE html>
-<html>
-    <head>
-        <title>AR UTARS  |  Setup A New Test</title>
-    </head>
 
-    <body>
-        <h1>New Test</h1>
-        <h5>Configure Setup</h5>
-        
-        <div class="center2">
-            <p><center><h4>Select keyboard to test</h4></center></p>
-            <p>
-                <center>
-                    <select id="keyboard">
-                        <!-- show all keyboard options -->
-                        <!-- the following four hard-coded values are place holders -->
-                        <% for @kbrd in @kbrds %>
-                            <option value="<%= @kbrd.name %>"><%= @kbrd.name %></option>
-                        <% end %>
-                    </select>
-                </center>
-            </p>
-            <br><br><br>
-            <p>
-                <center>
-                    <h4>Select Test Suite</h4>
-                    <select id="suite">
-                        <!-- show all test suites -->
-                        <% for @testsuite in @ts %>
-                        <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
-                        <% end %>
-                    </select>
-                    <br><br>
-                    <form action="/testing/index?k=<%= @kbrd.name %>&p=test"><button id="btnSetup" class="btn btn-primary" type="submit" >Start Test</button></form>
-                </center>
-            </p>
-        </div>
+<div class="page-header">
+    <!-- <h1><%=t '.title', :default => "Start a new test" %></h1> -->
+</div>
 
-        <script>
-        
-        $('form').submit( function(e) {
-        
-            e.preventDefault();
-            var keyboard = $('#keyboard').val();
-            var script = 'StandardKeyboard';
-            if(keyboard != 'Standard') {
-                script = 'PeripheralKeyboard'
-            }
-            window.location.href = "/testing/index?k=" + script + "&p=" + $('#suite').val();
+<div class="center-green-border">
+    <p><center><h4>Select keyboard to test</h4></center></p>
+    <p>
+        <center>
+            <select id="keyboard">
+                <% for @keyboard in @keyboards %>
+                <option value="<%= @keyboard.name %>"><%= @keyboard.name %></option>
+                <% end %>
+            </select>
+        </center>
+    </p>
+    <br><br><br>
+    <p>
+        <center>
+            <h4>Select Test Suite</h4>
+            <select id="suite">
+                <!-- show all test suites -->
+                <% for @testsuite in @test_suites %>
+                <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
+                <% end %>
+            </select>
+            <br><br>
+            <form action="/testing/index"><button id="btnSetup" class="btn btn-primary" type="submit" >Start Test</button></form>
+        </center>
+    </p>
 
-        });
+    <%= link_to "Test Setup", {controller: 'test_sessions', action: 'setup', test_session: { keyboard_id: @keyboard.id, 
+                                                                                             test_suite_id: @testsuite.id } }, 
+                              :class => "btn btn-primary", :method => :post %>
+</div>
 
-        </script>
+<script>
 
-    </body>   
-</html>
+    $('form').submit( function(e) {
+
+        e.preventDefault();
+        var keyboard = $('#keyboard').val();
+        var script = 'StandardKeyboard';
+        if(keyboard != 'Standard') {
+            script = 'PeripheralKeyboard'
+        }
+        window.location.href = "/testing/index?k=" + script + "&p=" + $('#suite').val();
+    });
+
+</script> 
 

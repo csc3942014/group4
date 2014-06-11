@@ -48,18 +48,12 @@ class TestSessionsController < ApplicationController
       
       @test_session = TestSession.new( keyboard_id: keyboard_id, 
                                        test_suite_id: test_suite_id,
-                                       user_id: user_id
-                                     ) 
+                                       user_id: user_id,
+          							   start_time: DateTime.now
+                                     )
+      @test_session.save
       
-      respond_to do |format|
-      if @test_session.save
-        format.html { redirect_to @test_session, notice: 'Test session was successfully created.' }
-        format.json { render :show, status: :created, location: @test_session }
-      else
-        format.html { render :new }
-        format.json { render json: @test_session.errors, status: :unprocessable_entity }
-      end
-    end
+      redirect_to testing_path(test_session_id: @test_session.id)
   end
 
   # PATCH/PUT /test_sessions/1

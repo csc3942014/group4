@@ -1,6 +1,6 @@
 class TestSetupController < ApplicationController
   def index
-      @kbrds = Keyboard.all;
-      @ts = TestSuite.all;
+      @keyboards = Keyboard.all
+      @test_suites = TestSuite.all 
   end
 end

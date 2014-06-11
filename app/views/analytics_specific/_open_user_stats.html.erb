@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <!-- using google chart powered by chartkick -->
+        <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    </head>
+    
+    <body>
+        <% user.each do |usr| %>
+            <table>
+                <tr>
+                    <td>
+                        <div class="userTitleContainer">
+                            <center>
+                            <table>
+                                <tr><td><center><h2>User <%= usr.id %></h2></center></td></tr>
+                                <tr><td><hr></td></tr>
+                                <tr><center><td><center><h3><%= allTests.count %></h3></center></td></center></tr>
+                                <tr><center><td><center><h4>tests completed</h4></center></td></center></tr>
+                                <tr><center><td><center><h4>using</h4></center></td></center></tr>
+                                <tr><td><center><h2>1</h2></center></td></tr>
+                                <tr><td><center><h4>keyboard(s)</h4></center></td></tr>
+                            </table>
+                            </center>
+                        </div>
+                    </td>
+                    <td><h4> </h4></td><td><h4> </h4></td>
+                    <!-- Show all of this user's user attributes -->
+                    <td>
+                        <div class="userAttributesContainer">
+                            <center>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <center><h3>User's Attributes</h3></center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <h4><li>Left-Handed</li></h4> <br>
+                                                            <h4><li>Hello</li></h4> <br>
+                                                            <h4><li>Hello</li></h4> <br>
+                                                            <h4><li>Hello</li></h4>
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        <ul>
+                                                            <h4><li>Hello</li></h4> <br>
+                                                            <h4><li>Hello</li></h4> <br>
+                                                            <h4><li>Hello</li></h4> <br>
+                                                            <h4><li>Hello</li></h4> 
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                            </center>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Show all of user's tests -->
+            <center>
+                <table width="85%">
+                    <tr>
+                        <td width="80%" valign="center">
+                            <div style='overflow-x:scroll;overflow-y:scroll;width:100%;height:272px', id="scrollie">
+                                <h1> </h1>
+                                <table class="table table-striped" id="tsTbl">
+                                    <tr>
+                                        <left><th>Test Suite</th></left>
+                                        <center><th>Keyboard</th></center>
+                                        <right><th align="right">&nbsp;</th></right>
+                                    </tr>
+                                    <% allTests.each do |test| %>
+                                        <tr>
+                                            <% @thisTestSuite = TestSuite.where('id = ?', test.test_suite_id) %>
+                                            <% @thisKeyboard = Keyboard.where('id = ?', test.keyboard_id) %>
+                                            <% @thisTestSuite.each do |tts| %>
+                                                <left><td><h4><%= tts.name %></h4></td></left>
+                                                <% @thisKeyboard.each do |tk| %>
+                                                    <center><td><h4><%= tk.name %></h4></td></center>
+                                                <% end %>
+                                            <% end %>
+                                            <td align="right"><form action="/home_page"><button class="btn btn-primary" type="submit" >View Summary</button></form></td>
+                                        </tr>
+                                    <% end %>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        <% end %> 
+    </body>
+</html>

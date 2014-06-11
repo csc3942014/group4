@@ -21,5 +21,6 @@ module Group4
   class Application < Rails::Application
       config.reload_classes_only_on_change = false
       config.i18n.enforce_available_locales = true
+      config.assets.logger = false
   end
 end
