@@ -49,7 +49,7 @@ class TestSessionsController < ApplicationController
                                      )
       @test_session.save
       
-      redirect_to testing_path(test_session_id: @test_session.id)
+      redirect_to testing_path(test_session_id: @test_session.id, keyboard_id: @test_session.keyboard_id)
   end
 
   # PATCH/PUT /test_sessions/1

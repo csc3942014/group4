@@ -4,7 +4,7 @@ $(document).on 'page:change', ->
     init()
 
 init = () ->
-    loadKeyboard(gup( "keyboardId" ))
+    loadKeyboard(gup( "keyboard_id" ))
 
 #
 # Utilities
