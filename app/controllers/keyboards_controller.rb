@@ -1,12 +1,12 @@
 class KeyboardsController < ApplicationController
-  before_action :set_keyboard, only: [:show, :edit, :update, :destroy]
+  before_action :set_keyboard, only: [:show, :destroy]
 
   # GET /keyboards
   # GET /keyboards.json
   def index
     @keyboards = Keyboard.all
   end
-
+    
   # GET /keyboards/1
   # GET /keyboards/1.json
   def show
@@ -15,10 +15,6 @@ class KeyboardsController < ApplicationController
   # GET /keyboards/new
   def new
     @keyboard = Keyboard.new
-  end
-
-  # GET /keyboards/1/edit
-  def edit
   end
 
   # POST /keyboards
@@ -32,20 +28,6 @@ class KeyboardsController < ApplicationController
         format.json { render :show, status: :created, location: @keyboard }
       else
         format.html { render :new }
-        format.json { render json: @keyboard.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /keyboards/1
-  # PATCH/PUT /keyboards/1.json
-  def update
-    respond_to do |format|
-      if @keyboard.update(keyboard_params)
-        format.html { redirect_to @keyboard, notice: 'Keyboard was successfully updated.' }
-        format.json { render :show, status: :ok, location: @keyboard }
-      else
-        format.html { render :edit }
         format.json { render json: @keyboard.errors, status: :unprocessable_entity }
       end
     end

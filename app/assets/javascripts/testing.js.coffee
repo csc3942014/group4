@@ -23,6 +23,8 @@ gup = ( name ) ->
 # All the doing stuff
 #
 loadKeyboard = (keyboardId) ->
+    return "" unless keyboardId?
+    
     $.ajax({
       url: "/keyboards/" + keyboardId,
       type: "GET",

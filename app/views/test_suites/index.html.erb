@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t ' ' %></th>
     </tr>
   </thead>
   <tbody>
@@ -18,8 +18,6 @@
         <td><%= test_suite.name %></td>
         <td><%=l test_suite.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_test_suite_path(test_suite), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       test_suite_path(test_suite),
                       :method => :delete,

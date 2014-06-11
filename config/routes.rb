@@ -1,106 +1,51 @@
 Rails.application.routes.draw do
 
-  get 'landing_page/index',		        :as => :landing_page
+    devise_for :users
+    devise_scope :user do
+        root to: "devise/sessions#new"
+    end
 
-  post 'analytics_specific/reload_keyboards'
-  post 'analytics_specific/reload_testsuites'
-  post 'analytics_specific/reload_users'
-  post 'analytics_specific/loadup_keyboard'
-  post 'analytics_specific/loadup_user'
-
-  post 'test_manager/reload_suites'
-  post 'test_manager/reload_words'
-  post 'test_manager/delete_word'
-
-  get 'test_manager/index',		        :as => :test_manager
-  get 'testing/index', 					:as => :testing
-  get 'test_setup/index', 		        :as => :test_setup
-  get 'analytics_comparatif/index', 	:as => :analytics_comparatif
-  get 'analytics_specific/index', 	    :as => :analytics_specific
-  get 'analytics_general/index', 	    :as => :analytics_general
-  get 'home_page/index', 		        :as => :home_page
-    
     class OnlyAjaxRequest
         def matches?(request)
             request.xhr?
         end
     end
-    
-  match 'words/add_word' => 'words#add_word', :via => [:post]
-  match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
-  match 'test_sessions/setup' => 'test_sessions#setup', :via => [:post]
 
-  resources :attributes
-  resources :keyboards
-  resources :coordinates
-  resources :preset_words
-  resources :test_suite_words
-  resources :test_suites
-  resources :words
-  resources :test_units
-  resources :test_sessions
-  resources :user_roles
-  resources :roles
-  resources :user_infos
-  resources :user_attributes
+    get 'landing_page/index',		        :as => :landing_page
+    get 'home_page/index', 		        	:as => :home_page
 
-  devise_for :users
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
-    
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+    get 'test_manager/index',		        :as => :test_manager
+    get 'testing/index', 					:as => :testing
+    get 'test_setup/index', 		        :as => :test_setup
+    get 'analytics_comparatif/index', 		:as => :analytics_comparatif
+    get 'analytics_specific/index', 	    :as => :analytics_specific
+    get 'analytics_general/index', 	    	:as => :analytics_general
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+    post 'test_manager/reload_suites'
+    post 'test_manager/reload_words'
+    post 'test_manager/delete_word'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    post 'analytics_specific/reload_keyboards'
+    post 'analytics_specific/reload_testsuites'
+    post 'analytics_specific/reload_users'
+    post 'analytics_specific/loadup_keyboard'
+    post 'analytics_specific/loadup_user'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+    match 'words/add_word' => 'words#add_word', 			:via => [:post]
+    match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
+    match 'test_sessions/setup' => 'test_sessions#setup', 	:via => [:post]
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :attributes
+    resources :coordinates
+    resources :user_infos
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+    resources :test_sessions, 		except: [:edit]
+    resources :test_units, 			except: [:show, :edit]
+    resources :test_suites, 		except: [:show, :edit]
+    resources :keyboards, 			except: [:edit, :update]
+    resources :test_suite_words, 	only: [:index, :new, :create, :destroy]
+    resources :words, 				only: [:index, :new, :create, :destroy]
+    resources :user_roles, 			only: [:index, :new, :create, :destroy]
+    resources :roles, 				only: [:index, :new, :create, :destroy]
+    resources :user_attributes, 	only: [:index, :new, :create, :destroy]
 end

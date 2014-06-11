@@ -1,5 +1,5 @@
 class WordsController < ApplicationController
-    before_action :set_word, only: [:show, :edit, :update, :destroy]
+    before_action :set_word, only: [:destroy]
 
     respond_to :js
 
@@ -9,18 +9,9 @@ class WordsController < ApplicationController
         @words = Word.all
     end
 
-    # GET /words/1
-    # GET /words/1.json
-    def show
-    end
-
     # GET /words/new
     def new
         @word = Word.new
-    end
-
-    # GET /words/1/edit
-    def edit
     end
 
     # POST /words
@@ -100,20 +91,6 @@ class WordsController < ApplicationController
             @test_suite_word.save
 
             render json: { test: @test_suite_word.id }
-        end
-
-        # PATCH/PUT /words/1
-        # PATCH/PUT /words/1.json
-        def update
-            respond_to do |format|
-                if @word.update(word_params)
-                    format.html { redirect_to @word, notice: 'Word was successfully updated.' }
-                    format.json { render :show, status: :ok, location: @word }
-                else
-                    format.html { render :edit }
-                    format.json { render json: @word.errors, status: :unprocessable_entity }
-                end
-            end
         end
 
         # DELETE /words/1

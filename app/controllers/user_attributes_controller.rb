@@ -1,5 +1,5 @@
 class UserAttributesController < ApplicationController
-  before_action :set_user_attribute, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_attribute, only: [:destroy]
 
   # GET /user_attributes
   # GET /user_attributes.json
@@ -7,18 +7,9 @@ class UserAttributesController < ApplicationController
     @user_attributes = UserAttribute.all
   end
 
-  # GET /user_attributes/1
-  # GET /user_attributes/1.json
-  def show
-  end
-
   # GET /user_attributes/new
   def new
     @user_attribute = UserAttribute.new
-  end
-
-  # GET /user_attributes/1/edit
-  def edit
   end
 
   # POST /user_attributes
@@ -32,20 +23,6 @@ class UserAttributesController < ApplicationController
         format.json { render :show, status: :created, location: @user_attribute }
       else
         format.html { render :new }
-        format.json { render json: @user_attribute.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /user_attributes/1
-  # PATCH/PUT /user_attributes/1.json
-  def update
-    respond_to do |format|
-      if @user_attribute.update(user_attribute_params)
-        format.html { redirect_to @user_attribute, notice: 'User attribute was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_attribute }
-      else
-        format.html { render :edit }
         format.json { render json: @user_attribute.errors, status: :unprocessable_entity }
       end
     end
