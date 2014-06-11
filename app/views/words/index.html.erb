@@ -34,6 +34,13 @@
     <% end %>
   </tbody>
 </table>
+                <hr/>
+                <h2>Import Words</h2>
+            <% @words %>
+            <%= form_tag import_words_path, multipart: true do %>
+                <%= file_field_tag :file, :class => 'form-control eightyeight' %>
+                <%= submit_tag "Import", :class => 'btn btn-primary rightb' %>
+            <% end%>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_word_path,

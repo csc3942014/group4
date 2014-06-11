@@ -33,13 +33,19 @@ Rails.application.routes.draw do
   resources :preset_words
   resources :test_suite_words
   resources :test_suites
-  resources :words
+  
   resources :test_units
   resources :test_sessions
   resources :user_roles
   resources :roles
   resources :user_infos
   resources :user_attributes
+  resources :words do
+    collection { post :import }
+  end
+    
+    
+  
 
   devise_for :users
   devise_scope :user do

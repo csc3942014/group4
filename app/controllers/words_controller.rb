@@ -1,5 +1,5 @@
 class WordsController < ApplicationController
-  before_action :set_word, only: [:show, :edit, :update, :destroy]
+  before_action :set_word, only: [:show, :edit, :update, :destroy, :import]
 
   respond_to :js
     
@@ -21,6 +21,13 @@ class WordsController < ApplicationController
 
   # GET /words/1/edit
   def edit
+  end
+    
+    
+  # IMPORT /words/1
+  def import
+      Word.import(params[:file])
+      redirect_to root_url, notice: "Words imported."
   end
 
   # POST /words
