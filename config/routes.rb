@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'test_manager/delete_word'
 
   get 'test_manager/index',		        :as => :test_manager
+    get 'test_manager/testdb',		    :as => :test_db
   get 'testing/index', 					:as => :testing
   get 'test_setup/index', 		        :as => :test_setup
   get 'analytics_comparatif/index', 	:as => :analytics_comparatif
