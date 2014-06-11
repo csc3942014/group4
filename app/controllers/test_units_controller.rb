@@ -1,5 +1,5 @@
 class TestUnitsController < ApplicationController
-  before_action :set_test_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_unit, only: [:update, :destroy]
 
   # GET /test_units
   # GET /test_units.json
@@ -14,18 +14,9 @@ class TestUnitsController < ApplicationController
       
   end
 
-  # GET /test_units/1
-  # GET /test_units/1.json
-  def show
-  end
-
   # GET /test_units/new
   def new
     @test_unit = TestUnit.new
-  end
-
-  # GET /test_units/1/edit
-  def edit
   end
 
   # POST /test_units

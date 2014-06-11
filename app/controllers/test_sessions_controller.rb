@@ -1,5 +1,5 @@
 class TestSessionsController < ApplicationController
-  before_action :set_test_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_session, only: [:show, :update, :destroy]
   skip_before_filter :verify_authenticity_token  
 
   # GET /test_sessions
@@ -16,10 +16,6 @@ class TestSessionsController < ApplicationController
   # GET /test_sessions/new
   def new
     @test_session = TestSession.new
-  end
-
-  # GET /test_sessions/1/edit
-  def edit
   end
 
   # POST /test_sessions
@@ -53,7 +49,7 @@ class TestSessionsController < ApplicationController
                                      )
       @test_session.save
       
-      redirect_to testing_path(test_session_id: @test_session.id)
+      redirect_to testing_path(test_session_id: @test_session.id, keyboard_id: @test_session.keyboard_id)
   end
 
   # PATCH/PUT /test_sessions/1

@@ -15,10 +15,6 @@
         <tr>
             <td><%= word.word %></td>
             <td align="right">
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                        edit_word_path(word), 
-                                        :class => 'btn btn-default btn-xs' %>
-
                 <%= link_to "Delete", {controller: 'test_manager', action: 'delete_word', test_suite_id: test_suite_id, word_id: word.id }, 
                                         :class => "btn btn-danger btn-xs remote-delete-words", 
                                         :method => :post, 

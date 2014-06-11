@@ -1,5 +1,5 @@
 class UserRolesController < ApplicationController
-  before_action :set_user_role, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_role, only: [:update, :destroy]
 
   # GET /user_roles
   # GET /user_roles.json
@@ -7,18 +7,9 @@ class UserRolesController < ApplicationController
     @user_roles = UserRole.all
   end
 
-  # GET /user_roles/1
-  # GET /user_roles/1.json
-  def show
-  end
-
   # GET /user_roles/new
   def new
     @user_role = UserRole.new
-  end
-
-  # GET /user_roles/1/edit
-  def edit
   end
 
   # POST /user_roles
@@ -32,20 +23,6 @@ class UserRolesController < ApplicationController
         format.json { render :show, status: :created, location: @user_role }
       else
         format.html { render :new }
-        format.json { render json: @user_role.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /user_roles/1
-  # PATCH/PUT /user_roles/1.json
-  def update
-    respond_to do |format|
-      if @user_role.update(user_role_params)
-        format.html { redirect_to @user_role, notice: 'User role was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_role }
-      else
-        format.html { render :edit }
         format.json { render json: @user_role.errors, status: :unprocessable_entity }
       end
     end

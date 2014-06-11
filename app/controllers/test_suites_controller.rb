@@ -1,5 +1,5 @@
 class TestSuitesController < ApplicationController
-  before_action :set_test_suite, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_suite, only: [:update, :destroy]
 
   # GET /test_suites
   # GET /test_suites.json
@@ -7,18 +7,9 @@ class TestSuitesController < ApplicationController
     @test_suites = TestSuite.all
   end
 
-  # GET /test_suites/1
-  # GET /test_suites/1.json
-  def show
-  end
-
   # GET /test_suites/new
   def new
     @test_suite = TestSuite.new
-  end
-
-  # GET /test_suites/1/edit
-  def edit
   end
 
   # POST /test_suites

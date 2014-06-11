@@ -29,10 +29,9 @@
         </center>
     </p>
 
-    <%= link_to "Test Setup", {controller: 'test_sessions', action: 'setup', test_session: { keyboard_id: @keyboard.id, test_suite_id: @testsuite.id } }, 
-                              :class => "btn btn-primary remote-setup-session", 
-                              :method => :post,
-                               "data-type" => "json" %>
+    <%= link_to "Test Setup", {controller: 'test_sessions', action: 'setup', test_session: { keyboard_id: @keyboard.id, 
+                                                                                             test_suite_id: @testsuite.id } }, 
+                              :class => "btn btn-primary", :method => :post %>
 </div>
 
 <script>

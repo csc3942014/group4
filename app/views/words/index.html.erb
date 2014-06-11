@@ -9,8 +9,7 @@
       <th><%= model_class.human_attribute_name(:word) %></th>
       <th><%= model_class.human_attribute_name(:length) %></th>
       <th><%= model_class.human_attribute_name(:consecutive_letters) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t ' ' %></th>
     </tr>
   </thead>
   <tbody>
@@ -20,10 +19,7 @@
         <td><%= word.word %></td>
         <td><%= word.length %></td>
         <td><%= word.consecutive_letters %></td>
-        <td><%=l word.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_word_path(word), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       word_path(word),
                       :method => :delete,
