@@ -12,7 +12,9 @@ Rails.application.routes.draw do
             request.xhr?
         end
     end
+    
 
+    get 'results/index',		        	:as => :results_page
     get 'landing_page/index',		        :as => :landing_page
     get 'home_page/index', 		        	:as => :home_page
 
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
     post 'test_manager/reload_suites'
     post 'test_manager/reload_words'
     post 'test_manager/delete_word'
+    post 'results/load_results'
 
     post 'analytics_specific/reload_keyboards'
     post 'analytics_specific/reload_testsuites'

@@ -40,7 +40,7 @@ class TestSessionsController < ApplicationController
       
       keyboard_id = setup_params[:keyboard_id]
       test_suite_id = setup_params[:test_suite_id]
-      user_id = 1 #current_user
+      user_id = 2 #current_user
       
       @test_session = TestSession.new( keyboard_id: keyboard_id, 
                                        test_suite_id: test_suite_id,
@@ -51,7 +51,7 @@ class TestSessionsController < ApplicationController
       
       redirect_to testing_path(test_session_id: @test_session.id, keyboard_id: @test_session.keyboard_id)
   end
-
+    
   # PATCH/PUT /test_sessions/1
   # PATCH/PUT /test_sessions/1.json
   def update
@@ -66,6 +66,7 @@ class TestSessionsController < ApplicationController
     end
   end
 
+    
   # DELETE /test_sessions/1
   # DELETE /test_sessions/1.json
   def destroy
