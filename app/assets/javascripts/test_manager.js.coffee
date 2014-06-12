@@ -3,7 +3,7 @@ $(document).on 'page:change', ->
     init()
 
 #
-# Loading Test Suites
+# Initializes the page
 #
 init = () ->
     reloadTestSuites()
@@ -13,6 +13,7 @@ init = () ->
     $('#new_word').bind('ajax:success', (evt, data, status, xhr) -> reloadWords())
 
 @reloadTestSuites = () -> $( ".suitesTbl" ).load( "/test_manager/reload_suites", {} )
+
 
 #
 # Loading Test Suite WORDS
@@ -27,11 +28,12 @@ selectedSuite = 1
     selectedSuite = suiteId
     reloadWords()
     
+    
 #
 # Adding a word
 # 
 overrideAddWordForm = () ->
-    $('#addWordForm').submit( () ->  
+    $('#new_word').submit( () ->  
         valuesToSubmit = $(this).serialize();
         valuesToSubmit = valuesToSubmit.substring(0, valuesToSubmit.length - 1)
         valuesToSubmit+=selectedSuite;

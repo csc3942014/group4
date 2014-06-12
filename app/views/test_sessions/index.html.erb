@@ -30,8 +30,6 @@
         <td><%= test_session.start_time %></td>
         <td><%= test_session.end_time %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_test_session_path(test_session), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       test_session_path(test_session),
                       :method => :delete,

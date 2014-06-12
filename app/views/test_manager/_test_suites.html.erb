@@ -15,10 +15,6 @@
         <tr>
             <td onclick="loadSuiteWords(this, <%= test_suite.id %>)"><%= test_suite.name %></td>
             <td align="right">
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                        edit_test_suite_path(test_suite),
-                                        :class => 'btn btn-default btn-xs' %>
-
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                                             test_suite_path(test_suite),
                                             :method => :delete,
