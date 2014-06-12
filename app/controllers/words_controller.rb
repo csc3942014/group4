@@ -1,6 +1,6 @@
 class WordsController < ApplicationController
 
-    before_action :set_word, only: [:show, :edit, :update, :destroy]
+    before_action :set_word, only: [:show, :edit, :update, :destroy, :import]
 
     respond_to :js
 
@@ -23,6 +23,31 @@ class WordsController < ApplicationController
     # GET /words/1/edit
     def edit
     end
+    
+    
+    def import
+        Word.import(params[:file])
+        
+        CSV.foreach(file.path, headers: true) do |row|
+            word.create! row.to_hash
+            word_length = word_text.length
+            word_consec = find_consucutive_letters(word_text)
+            
+            @word = Word.new(word: word_text, length: word_length, consecutive_letters: word_consec)
+   
+ 		end
+        respond_to do |format|
+            if @word.save
+                format.html { redirect_to @word, notice: 'Word was successfully created.' }
+                format.json { render :show, status: :created, location: @word }
+            else
+                format.html { render :new }
+                format.json { render json: @word.errors, status: :unprocessable_entity }
+            end
+        end
+
+    end
+
 
     # POST /words
     # POST /words.json
@@ -130,7 +155,7 @@ class WordsController < ApplicationController
         private
         # Use callbacks to share common setup or constraints between actions.
         def set_word
-            @word = Word.find(params[:id])
+#            @word = Word.find(params[:id])
         end
 
         # Never trust parameters from the scary internet, only allow the white list through.
