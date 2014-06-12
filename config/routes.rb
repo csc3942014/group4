@@ -55,4 +55,13 @@ Rails.application.routes.draw do
     resources :user_roles, 			only: [:index, :new, :create, :destroy]
     resources :roles, 				only: [:index, :new, :create, :destroy]
     resources :user_attributes, 	only: [:index, :new, :create, :destroy]
+    
+    
+    
+    
+     match 'user_attributes/setup' => 'user_attributes#setup', :via => [:post]
+    
+    
+    
+    
 end

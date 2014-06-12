@@ -27,6 +27,28 @@ class UserAttributesController < ApplicationController
       end
     end
   end
+     def setup
+        logger.info(params)
+        #(0..params[:ua].length).each
+        params[:ua].each do |i|  
+            @user_attribute = UserAttribute.new(
+                user_id: current_user.id,
+                attribute_id: i
+                )
+            @user_attribute.save
+        end   
+        respond_to do |format|
+      if @user_attribute.save
+          format.html { redirect_to :home_page, notice: 'Profile was updated' }
+        format.json { render :show, status: :created, location: @user_attribute }
+      else
+        format.html { render :new }
+        format.json { render json: @user_attribute.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+    
+    
 
   # DELETE /user_attributes/1
   # DELETE /user_attributes/1.json

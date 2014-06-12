@@ -6,3 +6,4 @@ class Word < ActiveRecord::Base
     validates :length, 				presence: true
     validates :consecutive_letters, presence: true
 end
+

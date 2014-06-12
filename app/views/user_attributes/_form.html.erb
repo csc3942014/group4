@@ -1,16 +1,26 @@
-<%= form_for @user_attribute, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user_attribute, url: {action: "setup"}, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
+  
     <%= f.label :attribute_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :attribute_id, :class => 'form-control' %>
+                    <% @attributes = Attribute.all %>
+                        <table>
+                        <tbody>
+                            <% @attributes.each do |attribute| %>
+                              <tr>
+                                  <td><%= check_box_tag 'ua[]', attribute.id %>&nbsp;<%= attribute.name %></td>
+                               <!-- <td><input type="checkbox" name: "<%= attribute.name %>"><%= attribute.name %></td> -->
+                              </tr>
+                           <% end %>
+                          </tbody>
+                        </table>
+
+
+
+  <div class="form-group">
     </div>
   </div>
+       <div >  
 
   
   <%= f.submit nil, :class => 'btn btn-primary' %>

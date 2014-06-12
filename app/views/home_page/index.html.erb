@@ -11,18 +11,13 @@
 
 
 <h1>Welcome</h1>
-<h4>Administrator Homepage</h4>
-
-<p>
-
-<% if @is_an_admin %>
+      
+<!-- different greetings for user and admin -->    
+<% if current_user.admin %>
     Hey, admin!
 <% else %>
     Hey, user!
-    <%= @is_an_admin %>
 <% end %>
-    
-</p>
 
 <%= @x %>
 
@@ -31,7 +26,7 @@
 <!-- add analytics button, this should be top and cetered -->
 <br>
 
-<% if @is_an_admin %>
+<% if current_user.admin? %>
     <div class="farLeft">
         <div class="analyticsDashContainer">
             <font color="white">
@@ -101,6 +96,7 @@
             Setup New Test
         </h4>
     </center>
+    <footer><a href="/user_attributes/new">Edit Profile</a></footer>
 <% end %>
     </body>
     </html>
