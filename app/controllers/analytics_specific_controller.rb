@@ -40,12 +40,18 @@ class AnalyticsSpecificController < ApplicationController
       @testSessions.each do |tSess|
           
           #get user perception data from each test session
-          @userPercepData['accuracy'] += tSess.accuracy_ranking
-          @userPercepData['ease'] += tSess.ease_ranking
-          @userPercepData['fun'] += tSess.fun_ranking
+          if tSess.accuracy_ranking != nil
+              @userPercepData['accuracy'] += tSess.accuracy_ranking
+          end
+          if tSess.ease_ranking != nil
+          	@userPercepData['ease'] += tSess.ease_ranking
+          end
+          if tSess.fun_ranking != nil
+          	@userPercepData['fun'] += tSess.fun_ranking
+          end
           userPercepFrequency += 1
           
-          
+          @debuggingP = []
           #get all the test units for this particular test session
           @allTU = TestUnit.where('test_session_id = ?', tSess.id)
           @allTU.each do |tu|
@@ -59,12 +65,18 @@ class AnalyticsSpecificController < ApplicationController
                       @pieChartData['Incorrect'] += 1
                   end
                   
+                  @duration = 0
                   #add duration to durationChartData
-                  duration = tu.end_time - tu.start_time
+                  if tu.end_time != nil && tu.start_time != nil
+                      @duration = (tu.end_time.to_time - tu.start_time.to_time)
+                      @debuggingP.push(tu.end_time.to_time - tu.start_time.to_time)
+                  else
+                      duration = 0
+                  end
                   if wrd.length < 10 && wrd.length > 0
-                      @durationChartData[wrd.length.to_s] += duration
+                      @durationChartData['wrd.length.to_s'] = @duration + @durationChartData[wrd.length.to_s]
                   else 
-                      @durationChartData['10+'] += duration
+                      @durationChartData['10+'] = @duration.to_i + @durationChartData['10+']
                   end 
               end
           end
@@ -72,7 +84,9 @@ class AnalyticsSpecificController < ApplicationController
       
       #turn totals into averages for the duration chart
       @durationChartData.each do |key, duration|
-          @durationChartData[key] = ( @durationChartData[key] / @durationChartFrequency[key] )
+          if @durationChartData[key] != nil && @durationChartFrequency[key] != nil
+          	 @durationChartData[key] = ( @durationChartData[key] / @durationChartFrequency[key] )
+          end
       end
 
       #turn totals into averages for the user perception rankings (if any exist)
@@ -82,8 +96,10 @@ class AnalyticsSpecificController < ApplicationController
           end
       end
       
+      @hardCode = {"0" => 0, "1" => 5, "2" => 6, "3" => 10, "4" => 11, "5" => 13, "6" => 17, "7" => 22, "8" => 26, "9" => 30, "10+" => 40}
       
-      render :partial => "open_keyboard_stats", :locals => { :pcData => @pieChartData, :keyboard => @keyboard, :dcData => @durationChartData, :userPerceptions => @userPercepData } 
+      #:dcData => @durationChartData << replace the @hardcode with this
+      render :partial => "open_keyboard_stats", :locals => { :pcData => @pieChartData, :keyboard => @keyboard, :dcData => @hardCode, :userPerceptions => @userPercepData, :dp => @debuggingP } 
   end
     
   def loadup_user

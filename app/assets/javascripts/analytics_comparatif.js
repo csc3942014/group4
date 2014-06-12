@@ -18,4 +18,9 @@ function applySubFilterKb(kb1, kb2, typeF) {
     });
 }
 
+function applySubFilterAttributes(attributes, typeF) {
+    $(".comparisonContainer").load("/analytics_comparatif/apply_sub_filters_attributes", {
+        attributes: attributes, typef: typeF
+    });
+}
 

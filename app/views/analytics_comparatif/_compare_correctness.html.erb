@@ -43,14 +43,14 @@ table.comparisonTable td {
         <tr>
             <td>
                 <div class="durationChartContainer">
-                    <!-- replace the hardcoded values with pcData1 and pcData2 -->
-                    <%= pie_chart({"Correct" => 5, "Incorrect" => 10}) %>
+                    <!-- replace the hardcoded values with pcData1 and pcData2 {"Correct" => 5, "Incorrect" => 10}-->
+                    <%= pie_chart(pcData1) %>
                 </div>
             </td>
             <td> </td><td> </td><td> </td>
             <td>
                 <div class="durationChartContainer">
-                    <%= pie_chart({"Correct" => 2, "Incorrect" => 14}) %>
+                    <%= pie_chart(pcData2) %>
                 </div>
             </td>
         </tr>

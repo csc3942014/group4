@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
     post 'analytics_comparatif/apply_main_filters'
     post 'analytics_comparatif/apply_sub_filters_kb'
+    post 'analytics_comparatif/apply_sub_filters_attributes'
     
     match 'words/add_word' => 'words#add_word', 			:via => [:post]
     match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
