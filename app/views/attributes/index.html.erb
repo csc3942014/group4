@@ -18,8 +18,7 @@
         <td><%= attribute.name %></td>
         <td><%=l attribute.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_attribute_path(attribute), :class => 'btn btn-default btn-xs' %>
+         
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       attribute_path(attribute),
                       :method => :delete,

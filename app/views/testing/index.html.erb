@@ -8,7 +8,10 @@
     });
 </script>
 
+<%= hidden_field_tag "theUrl", root_url, { :id => "theUrl" } %>
+
 <%= hidden_field_tag "theWords", @words.to_json, { :id => "theWords" } %>
+<%= hidden_field_tag "testSession", @test_session.to_json, { :id => "testSession" } %>
 
 <div id="mainContent">
     <table>
@@ -16,23 +19,18 @@
         <td>            
           <div id="textWord">
               <form>
-                  <h2>Target Words: <input type="text" id="targetWord" /></h2><br /> 
-                  <h2>Output Words: <input type="text" id="outputWord" /></h2><br />
+                  <h2>Target Words: <input type="text" id="targetWord" style=" border-color: green"/></h2><br /> 
+                  <h2>Output Words: <input type="text" id="outputWord" style=" border-color: green" /></h2><br />
               </form>
 	        </div>
         </td>
-        <td>
-            <div id="ProgressBarSide" style="width: 200px; color: green; border-width: 1px; border-style: Solid ">
-                <div id="ProgressBar" style= "height: 30px; width: 0%; background-color: #3366FF"></div>
-                <div id="ProgressText" style="height: 30px; width: 100%;text-align:center; "></div>            
-            </div>
-        </td>
-      </tr>
+          <td>
+            <div id="ProgressText" style="height: 100%; width: 100%;text-align:center; font-size:50; "></div>
+          </td>
+        </tr>
     </table>
-    
     <div id="container"></div>
-    
     <script type="text/javascript" id="scriptKB"></script>
-    
     <%= link_to "Next", '#', :id => "submit", :class => "btn btn-primary next-button", :remote => true %>
 </div>
+

@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     post 'test_manager/reload_suites'
     post 'test_manager/reload_words'
     post 'test_manager/delete_word'
-    post 'results/load_results'
 
     post 'analytics_specific/reload_keyboards'
     post 'analytics_specific/reload_testsuites'
