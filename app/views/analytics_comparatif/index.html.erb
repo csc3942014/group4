@@ -3,6 +3,17 @@
 <html>
 <head>
     <title>AR UTARS Analytics  |  Comparative</title>
+    <script type="text/javascript"> 
+        function getSelectedValue() {
+            var sec = document.getElementById('secondary');  
+            var secFilter = sec.options[sec.selectedIndex].value;
+            var sec2 = document.getElementById('primary');
+            var primFilter = sec2.options[sec2.selectedIndex].value;
+            applyMainFilter(secFilter, primFilter);
+            return sec;
+                    
+        }  
+    </script>
 </head>
 
 <body>
@@ -41,18 +52,19 @@
         <tr>
             <td><h4>filter:&nbsp;</h4></td>
             <td>
-                <h4><select>
+                <h4><select name="primary" id="primary">
                     <option value="correctness">Correctness</option>
                     <option value="speed">Speed</option>
                     <option value="perceptions">User Perceptions</option>
                 </select></h4>
             </td>
+            
             <td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td>
             <td>
                 <h4>by:&nbsp;</h4>
             </td>
             <td>
-                <h4><select>
+                <h4><select name="secondary" id="secondary">
                     <option value="keyboards">Keyboards</option>
                     <option value="tests">Test Suites</option>
                     <option value="attributes">User Attributes</option>
@@ -60,10 +72,14 @@
             </td>
             <td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td>
             <td>
-                <form action="/attributes"><button class="btn btn-primary" type="submit" >apply filters</button></form>
+                
+            </td>
+            <td>
+                <button class="btn btn-primary" type="submit" onclick="getSelectedValue();">apply filters</button>
             </td>
         </tr>
     </table>
+
     <br><br>
     
     <!-- placeholder for the sub filters -->
@@ -73,8 +89,9 @@
     
     <!-- placeholder for the two comparison containers -->
     <div class="comparisonContainer">
-        
+                
     </div>
+   
     
 </body>
 </html>

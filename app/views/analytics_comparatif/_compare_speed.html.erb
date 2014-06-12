@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <style>
+        
+        table.comparisonTable {
+    
+        }
+        table.comparisonTable td {
+            height: 5 px;
+            width:  75px;
+        }
+        .durationChartContainer
+		{
+	          width:                510px;
+			  height:               350px;
+			  text-align:           left;
+			  margin:               auto;
+			  margin-top:           25px;
+			  /* background-color: rgba(0,0,0,.2); */
+			  padding-bottom:       0px;
+			  padding-top:          0px;
+			  padding-left:         15px;
+			  border-radius:        10px;
+			  /* box-shadow: 20px 30px 30px silver; */
+		}
+    </style>
+</head>
+<body>
+
+    <table class="comparisonTable">
+        <tr><hr></tr>
+        <tr>
+            <td>
+                <h4><%= name1 %></h4>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+                <h4><%= name2 %></h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            	<!-- Create the word duration chart -->
+            	<div class="durationChartContainer">
+            	    <center><h5>Average Typing Duration (in seconds)</h5></center>
+            	    <%= column_chart (dcData1) %>
+            	    <center><h6>Number of Letters in Word</h6></center>
+            	</div>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+            	<!-- Create the word duration chart -->
+            	<div class="durationChartContainer">
+            	    <center><h5>Average Typing Duration (in seconds)</h5></center>
+            	    <%= column_chart (dcData2) %>
+            	    <center><h6>Number of Letters in Word</h6></center>
+            	</div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

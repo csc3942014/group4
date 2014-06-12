@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <style>
+        .durationChartContainer
+		{
+	          width:                510px;
+			  height:               350px;
+			  text-align:           left;
+			  margin:               auto;
+			  margin-top:           25px;
+			  /* background-color: rgba(0,0,0,.2); */
+			  padding-bottom:       0px;
+			  padding-top:          0px;
+			  padding-left:         15px;
+			  border-radius:        10px;
+			  /* box-shadow: 20px 30px 30px silver; */
+		}
+        
+table.comparisonTable {
+    
+}
+table.comparisonTable td {
+            height: 5 px;
+            width:  75px;
+}
+    </style>
+</head>
+<body>
+    
+
+    <table class="comparisonTable">
+        <tr><hr></tr>
+        <tr>
+            <td>
+                <h4><%= name1 %></h4>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+                <h4><%= name2 %></h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="durationChartContainer">
+                    <!-- replace the hardcoded values with pcData1 and pcData2 -->
+                    <%= pie_chart({"Correct" => 5, "Incorrect" => 10}) %>
+                </div>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+                <div class="durationChartContainer">
+                    <%= pie_chart({"Correct" => 2, "Incorrect" => 14}) %>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>
