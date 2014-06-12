@@ -6,5 +6,9 @@ class Word < ActiveRecord::Base
     validates :length, 				presence: true
     validates :consecutive_letters, presence: true
     
-
+	def self.import(file)
+		CSV.foreach(file.path, headers: true) do |row|
+            Words.create! row.to_hash
+		end
+	end
 end

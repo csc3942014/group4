@@ -6,6 +6,11 @@ class TestSessionsController < ApplicationController
   # GET /test_sessions.json
   def index
     @test_sessions = TestSession.all
+ 	respond_to do |format|
+    	format.html
+        format.csv { send_data @test_sessions.to_csv }
+        format.xls { send_data @test_sessions.to_csv (col_sep: "\t") }
+  	end
   end
 
   # GET /test_sessions/1

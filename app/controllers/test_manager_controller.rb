@@ -10,6 +10,10 @@ class TestManagerController < ApplicationController
       render :partial => "test_suites", object: @test_suites
   end
 
+  def import
+      Words.import(params[:file])
+  end
+  
   def reload_words
       @ids_query = TestSuiteWord.where('test_suite_id = ?', params[:test_suite_id].to_i)
       

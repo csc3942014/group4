@@ -45,7 +45,11 @@ gem 'chartkick'
 
 gem 'wkhtmltopdf-binary'
 
+gem 'wkhtmltopdf'
+
 gem 'wicked_pdf'
+
+gem 'pdfkit'
 
 gem 'roo'
 

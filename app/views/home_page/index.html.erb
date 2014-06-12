@@ -82,13 +82,13 @@
             <!-- </div> -->
         </div>
     </div>
-    <a href="/analytics_general/index"><img style="border:0;" src="/assets/uploadIcon-01.png" alt="Upload" width="175" height="175"></a>
+    <div>
+        <a href="/analytics_general/index"><img style="border:0;" src="/assets/uploadIcon-01.png" alt="Upload" width="175" height="175"></a>
             <br><br><br><br>
             <form action="/analytics_general/index"><button class="btn btn-xlarge btn-primary" type="submit" >Upload</button></form>
     <a href="/analytics_general/index"><img style="border:0;" src="/assets/downloadIcon-01.png" alt="Download" width="175" height="175"></a>
             <br><br><br><br>
-            <form action="/analytics_general/index"><button class="btn btn-xlarge btn-primary" type="submit" >Download Data</button></form>
-
+                <p>Download: <%= link_to "CSV", test_sessions_path(format: "csv") %> OR <%= link_to "Excel", test_sessions_path(format: "xls") %></p>
              
 <!-- add manage user attributes and manage tests buttons, they should be lower than analytics and on the same level as each other -->
 

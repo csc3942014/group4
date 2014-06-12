@@ -33,8 +33,12 @@
     </tr>
     <tr>
         <td colspan = "2">
+            <h2>Import Words</h2>
 
-            
+            <%= form_tag words_path, multipart: true do %>
+                <%= file_field_tag :file,  :class => 'form-control eightyeight' %>
+                <%= submit_tag "Import CSV" , :class => 'btn btn-primary rightb' %>
+            <% end %>
                 
         </td>
     </tr>
