@@ -33,7 +33,7 @@ selectedSuite = 1
 # Adding a word
 # 
 overrideAddWordForm = () ->
-    $('#new_word').submit( () ->  
+    $('#new_word').submit( () ->
         valuesToSubmit = $(this).serialize();
         valuesToSubmit = valuesToSubmit.substring(0, valuesToSubmit.length - 1)
         valuesToSubmit+=selectedSuite;

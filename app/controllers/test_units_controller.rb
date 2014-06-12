@@ -22,12 +22,19 @@ class TestUnitsController < ApplicationController
   # POST /test_units
   # POST /test_units.json
   def create
-    @test_unit = TestUnit.new(test_unit_params)
+      start_time = Time.zone.now
+      test_session_id = test_unit_params[:test_session_id]
+      word_id = test_unit_params[:word_id]
+      
+      @test_unit = TestUnit.new(test_session_id: test_session_id, 
+          						word_id: word_id, 
+          						start_time: start_time, 
+          						num_backspace: 0)
 
     respond_to do |format|
       if @test_unit.save
         format.html { redirect_to @test_unit, notice: 'Test unit was successfully created.' }
-        format.json { render :show, status: :created, location: @test_unit }
+        format.json { render json: @test_unit }
       else
         format.html { render :new }
         format.json { render json: @test_unit.errors, status: :unprocessable_entity }
@@ -41,7 +48,7 @@ class TestUnitsController < ApplicationController
     respond_to do |format|
       if @test_unit.update(test_unit_params)
         format.html { redirect_to @test_unit, notice: 'Test unit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test_unit }
+        format.json { render json: @test_unit }
       else
         format.html { render :edit }
         format.json { render json: @test_unit.errors, status: :unprocessable_entity }
@@ -67,6 +74,6 @@ class TestUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_unit_params
-      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time, :num_backspace)
+      params.require(:test_unit).permit(:test_session_id, :word_id, :start_time, :end_time, :num_backspace, :input)
     end
 end

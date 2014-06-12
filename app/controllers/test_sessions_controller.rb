@@ -58,7 +58,7 @@ class TestSessionsController < ApplicationController
     respond_to do |format|
       if @test_session.update(test_session_params)
         format.html { redirect_to @test_session, notice: 'Test session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test_session }
+        format.json { render json: @test_session }
       else
         format.html { render :edit }
         format.json { render json: @test_session.errors, status: :unprocessable_entity }

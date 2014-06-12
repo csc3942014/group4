@@ -18,9 +18,8 @@
         <center>
             <h4>Select Test Suite</h4>
             <select id="suite">
-                <!-- show all test suites -->
                 <% for @testsuite in @test_suites %>
-                <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
+                    <option value="<%= @testsuite.id %>"><%= @testsuite.name %></option>
                 <% end %>
             </select>
         </center>
@@ -32,4 +31,3 @@
                                                                                              test_suite_id: @testsuite.id } }, 
                               :class => "btn btn-primary", :method => :post %>
 </div>
-

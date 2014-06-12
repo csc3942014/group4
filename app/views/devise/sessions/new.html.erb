@@ -1,74 +1,23 @@
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-	<script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<style type="text/css">
-
-    .signInForm {
-    text-align: center;
-    margin:auto;
-    margin-top: 50px;
-    width: 60%;
-    /* background-color: rgba(0,0,0,.2); */
-    padding-bottom:30px;
-    padding-top: 30px;
-    border-radius: 30px;
-    /* box-shadow: 20px 30px 30px silver; */
-}
-textarea, select, .uneditable-input {
-  border-style: solid;                  
-  border-color:green;
-  height:20px;
-  width: 60%;
-  margin-bottom: 50px;
-}
-</style>
+    <h1>AR UTARS</h1>
+<hr>
 </head>
-    
-    
-    
-<body>
-    <br />
-    <br />
-    <br />
-    <br />
-    <center>
-    <nav class="segmented-button">
-      <input type="radio" name="seg-1" value="user" id="seg-user" checked>
-      <label for="seg-user" class="first">User</label>
-      <input type="radio" name="seg-1" value="admin" id="seg-admin">
-      <label for="seg-admin" class="last">Admin</label>
-    </nav>
-    </center>
-    
-    
-  <%= form_for(resource, :as => resource_name, :html => {class:"form-signin"}, :url => session_path(resource_name)) do |f| %>
-<h2 class:"form-signin-heading">Sign In</h2>
+
+<%= form_for(resource, :as => resource_name, :html => {class:"form-signin"}, :url => session_path(resource_name)) do |f| %>
+    <h2 class:"form-signin-heading">Sign In</h2>
     
 
-           <div>
-              <div><%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, class:"input-block-level", placeholder:"Email Address"%></div>
-    
-              <div style="padding:5px 5px 5px 0px"><%= f.label :password %><br />
-              <%= f.password_field :password, class:"input-block-level", autocomplete: "off", placeholder:"Password" %></div>
-              </div>
+    <div>
+        <div><%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, class:"input-block-level", placeholder:"Email Address"%></div>
+
+        <div style="padding:5px 5px 5px 0px"><%= f.label :password %><br />
+            <%= f.password_field :password, class:"input-block-level", autocomplete: "off", placeholder:"Password" %></div>
+    </div>
 
 
 <%= f.submit "Sign In", class:"btn btn-large btn-primary" %>       
 
-
 <%= render "devise/shared/links" %>  
 
-
 <% end %>
-
-    
-    
-    
-    
-    
-    
-</body>
-</html>

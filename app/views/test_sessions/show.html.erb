@@ -21,8 +21,6 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               test_sessions_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_test_session_path(@test_session), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               test_session_path(@test_session),
               :method => 'delete',
