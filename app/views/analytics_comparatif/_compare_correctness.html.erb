@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <style>
+        
+table.comparisonTable {
+    
+}
+table.comparisonTable td {
+            height: 5 px;
+            width:  75px;
+}
+    </style>
+</head>
+<body>
+    
+
+    <table class="comparisonTable">
+        <tr><hr></tr>
+        <tr>
+            <td>
+                <h4><%= name1 %></h4>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+                <h4><%= name2 %></h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="pieChart">
+                    <!-- replace the hardcoded values with pcData1 and pcData2 -->
+                    <%= pie_chart({"Correct" => 5, "Incorrect" => 10}) %>
+                </div>
+            </td>
+            <td> </td><td> </td><td> </td>
+            <td>
+                <%= pie_chart({"Correct" => 2, "Incorrect" => 14}) %>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

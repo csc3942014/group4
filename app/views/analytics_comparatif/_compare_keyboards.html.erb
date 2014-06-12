@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <script type="text/javascript"> 
+                function getSelections(typef) {
+                    var sec = document.getElementById('first');  
+                    var kbrd1Name = sec.options[sec.selectedIndex].value;
+                    var sec2 = document.getElementById('second');
+                    var kbrd2Name = sec2.options[sec2.selectedIndex].value;
+                    applySubFilter(kbrd1Name, kbrd2Name, typef);
+                }  
+        </script>
+    </head>
+    <body>
+
+        <center>
+            <table>
+                <tr>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+        <td>
+            <hr>
+        </td>
+    </tr>
+                <tr>
+                <td>
+                    <h5>Keyboard 1:</h5> 
+                </td>
+                <td><h4> &nbsp;</h4></td>
+                <td>
+                    <select name="first" id="first">
+                        <% allKeyboards.each do |keyboard| %>
+                            <option><%= keyboard.name %></option>
+                        <% end %>
+                    </select>
+                </td>
+                <td><h4> &nbsp;</h4></td><td><h4> &nbsp;</h4></td>
+                <td>
+                    <h5>Keyboard 2:</h5> 
+                </td>
+                <td><h4> &nbsp;</h4></td>
+                <td>
+                    <select name="second" id="second">
+                        <% allKeyboards.each do |keyboard| %>
+                            <option><%= keyboard.name %></option>
+                        <% end %>
+                    </select>
+                </td>
+                <td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td><td><h1>&nbsp;</h1></td>
+                <td>
+                
+                </td>
+                <td>
+                    <% if typeF.to_s === 'correctness' %>
+                        <button class="btn btn-primary btn-xs" type="submit" onclick="getSelections('correctness');">refresh data</button>
+                    <% elsif typeF.to_s === 'speed' %>
+                        <button class="btn btn-primary btn-xs" type="submit" onclick="getSelections('speed');">refresh data</button>
+                    <% else %>
+                        <button class="btn btn-primary btn-xs" type="submit" onclick="getSelections('perceptions');">refresh data</button>
+                    <% end %>
+                    
+                </td>
+                </tr>
+            </table>
+            <!-- placeholder for the two comparison containers -->
+            <div class="comparisonContainer">
+                
+            </div>
+        </center>
+    </body>
+</html>

@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     post 'analytics_specific/loadup_keyboard'
     post 'analytics_specific/loadup_user'
 
+    post 'analytics_comparatif/apply_main_filters'
+    post 'analytics_comparatif/apply_sub_filters_kb'
+    
     match 'words/add_word' => 'words#add_word', 			:via => [:post]
     match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
     match 'test_sessions/setup' => 'test_sessions#setup', 	:via => [:post]
