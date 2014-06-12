@@ -26,5 +26,3 @@ class AnalyticsGeneralController < ApplicationController
       end   
   end 
 end
-
-

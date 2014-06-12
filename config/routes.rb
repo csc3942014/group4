@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+    get 'test_manager/testdb',		    :as => :test_db
+    
     devise_for :users
     devise_scope :user do
         root to: "devise/sessions#new"
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
             request.xhr?
         end
     end
+    
 
+    get 'results/index',		        	:as => :results_page
     get 'landing_page/index',		        :as => :landing_page
     get 'home_page/index', 		        	:as => :home_page
 
@@ -31,9 +35,14 @@ Rails.application.routes.draw do
     post 'analytics_specific/loadup_keyboard'
     post 'analytics_specific/loadup_user'
 
+    post 'analytics_comparatif/apply_main_filters'
+    post 'analytics_comparatif/apply_sub_filters_kb'
+    post 'analytics_comparatif/apply_sub_filters_attributes'
+    
     match 'words/add_word' => 'words#add_word', 			:via => [:post]
     match 'words/add_word_suite' => 'words#add_word_suite', :via => [:post]
     match 'test_sessions/setup' => 'test_sessions#setup', 	:via => [:post]
+    match 'user_attributes/setup' => 'user_attributes#setup', :via => [:post]
 
     resources :attributes
     resources :coordinates

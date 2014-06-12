@@ -1,6 +1,6 @@
 
 <h1>Analytics</h1>
-    <h4>View Specific Test Results</h4>
+    <h4>View General Test Results</h4>
 
             
 
@@ -8,9 +8,9 @@
     <center>
         <nav class="segmented-button">
           <input type="radio" name="seg-1" value="General" id="seg-General">
-          <label for="seg-General" class="first">General</label>
+          <label for="seg-General" class="first">System Use</label>
           <input type="radio" name="seg-2" value="Specific Tests" id="seg-Specific" checked>
-          <label for="seg-Specific">Specific Tests</label>
+          <label for="seg-Specific">General</label>
           <input type="radio" name="seg-3" value="Comparative" id="seg-Compare">
           <label for="seg-Compare" class="last">Comparative</label>
         </nav>
@@ -44,9 +44,9 @@
         <tr><th>
             <input id="Keyboard" type="button" value="Keyboard" onclick="loadKeyboardFilter();"/>
         </th></tr>
-        <tr><th>
+        <!-- <tr><th>
             <input id="Test Suite" type="button" value="Test Suite" onclick="loadTestsuiteFilter();"/>
-        </th></tr>
+        </th></tr> -->
         <tr><th>
             <input id="User" type="button" value="User" onclick="loadUserFilter();"/>
         </th></tr>

@@ -11,18 +11,13 @@
 
 
 <h1>Welcome</h1>
-<h4>Administrator Homepage</h4>
-
-<p>
-
-<% if @is_an_admin %>
+      
+<!-- different greetings for user and admin -->    
+<% if current_user.admin %>
     Hey, admin!
 <% else %>
     Hey, user!
-    <%= @is_an_admin %>
 <% end %>
-    
-</p>
 
 <%= @x %>
 
@@ -31,7 +26,7 @@
 <!-- add analytics button, this should be top and cetered -->
 <br>
 
-<% if @is_an_admin %>
+<% if current_user.admin? %>
     <div class="farLeft">
         <div class="analyticsDashContainer">
             <font color="white">
@@ -89,6 +84,21 @@
     <a href="/analytics_general/index"><img style="border:0;" src="/assets/downloadIcon-01.png" alt="Download" width="175" height="175"></a>
             <br><br><br><br>
                 <p>Download: <%= link_to "CSV", test_sessions_path(format: "csv") %> OR <%= link_to "Excel", test_sessions_path(format: "xls") %></p>
+    <div class="farRight">
+        <div class="analyticsDashContainer">
+            <br><br><br><br><br><br><br>
+            <font color="white">
+            <h3>Upload</h3>
+            <hr width="62%">
+        </font>
+        <img style="border:0;" src="/assets/uploadIcon-01.png" alt="Upload" width="75" height="75">
+            <br><br><br><br>
+            <form action="upload_file.php" method="post" enctype="multipart/form-data">
+                <button class="btn btn-xlarge btn-primary" type="file" >Upload</button>
+            </form>
+        
+        </div>
+    </div>
              
 <!-- add manage user attributes and manage tests buttons, they should be lower than analytics and on the same level as each other -->
 
@@ -101,6 +111,7 @@
             Setup New Test
         </h4>
     </center>
+    <footer><a href="/user_attributes/new">Edit Profile</a></footer>
 <% end %>
     </body>
     </html>

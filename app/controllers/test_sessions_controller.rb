@@ -45,7 +45,7 @@ class TestSessionsController < ApplicationController
       
       keyboard_id = setup_params[:keyboard_id]
       test_suite_id = setup_params[:test_suite_id]
-      user_id = 1 #current_user
+      user_id = 2 #current_user
       
       @test_session = TestSession.new( keyboard_id: keyboard_id, 
                                        test_suite_id: test_suite_id,
@@ -56,14 +56,14 @@ class TestSessionsController < ApplicationController
       
       redirect_to testing_path(test_session_id: @test_session.id, keyboard_id: @test_session.keyboard_id)
   end
-
+    
   # PATCH/PUT /test_sessions/1
   # PATCH/PUT /test_sessions/1.json
   def update
     respond_to do |format|
       if @test_session.update(test_session_params)
         format.html { redirect_to @test_session, notice: 'Test session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test_session }
+        format.json { render json: @test_session }
       else
         format.html { render :edit }
         format.json { render json: @test_session.errors, status: :unprocessable_entity }
@@ -71,6 +71,7 @@ class TestSessionsController < ApplicationController
     end
   end
 
+    
   # DELETE /test_sessions/1
   # DELETE /test_sessions/1.json
   def destroy
