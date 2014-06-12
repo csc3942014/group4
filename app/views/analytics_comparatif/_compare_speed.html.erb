@@ -2,6 +2,14 @@
 <html>
 <head>
     <style>
+        
+        table.comparisonTable {
+    
+        }
+        table.comparisonTable td {
+            height: 5 px;
+            width:  75px;
+        }
         .durationChartContainer
 		{
 	          width:                510px;
@@ -16,18 +24,9 @@
 			  border-radius:        10px;
 			  /* box-shadow: 20px 30px 30px silver; */
 		}
-        
-table.comparisonTable {
-    
-}
-table.comparisonTable td {
-            height: 5 px;
-            width:  75px;
-}
     </style>
 </head>
 <body>
-    
 
     <table class="comparisonTable">
         <tr><hr></tr>
@@ -42,19 +41,23 @@ table.comparisonTable td {
         </tr>
         <tr>
             <td>
-                <div class="durationChartContainer">
-                    <!-- replace the hardcoded values with pcData1 and pcData2 -->
-                    <%= pie_chart({"Correct" => 5, "Incorrect" => 10}) %>
-                </div>
+            	<!-- Create the word duration chart -->
+            	<div class="durationChartContainer">
+            	    <center><h5>Average Typing Duration (in seconds)</h5></center>
+            	    <%= column_chart (dcData1) %>
+            	    <center><h6>Number of Letters in Word</h6></center>
+            	</div>
             </td>
             <td> </td><td> </td><td> </td>
             <td>
-                <div class="durationChartContainer">
-                    <%= pie_chart({"Correct" => 2, "Incorrect" => 14}) %>
-                </div>
+            	<!-- Create the word duration chart -->
+            	<div class="durationChartContainer">
+            	    <center><h5>Average Typing Duration (in seconds)</h5></center>
+            	    <%= column_chart (dcData2) %>
+            	    <center><h6>Number of Letters in Word</h6></center>
+            	</div>
             </td>
         </tr>
     </table>
-    
 </body>
 </html>

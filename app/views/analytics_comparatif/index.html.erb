@@ -4,26 +4,15 @@
 <head>
     <title>AR UTARS Analytics  |  Comparative</title>
     <script type="text/javascript"> 
-                function getSelectedValue() {
+        function getSelectedValue() {
+            var sec = document.getElementById('secondary');  
+            var secFilter = sec.options[sec.selectedIndex].value;
+            var sec2 = document.getElementById('primary');
+            var primFilter = sec2.options[sec2.selectedIndex].value;
+            applyMainFilter(secFilter, primFilter);
+            return sec;
                     
-                    var sec = document.getElementById('secondary');  
-                    var strUser = sec.options[sec.selectedIndex].value;
-                    var sec2 = document.getElementById('primary');
-                    var primFilter = sec2.options[sec2.selectedIndex].value;
-                    applyMainFilter(strUser, primFilter);
-                    index = document.getElementById('primary').selectedIndex;
-                    if (index.value == 'correctness') {
-                        
-                    }
-                    else if (index.value == 'speed') {
-                        
-                    }
-                    else if (index.value == 'perceptions') {
-                        
-                    }
-                    return index;
-                    
-                }  
+        }  
     </script>
 </head>
 
@@ -98,7 +87,10 @@
         
     </div>
     
-    
+    <!-- placeholder for the two comparison containers -->
+    <div class="comparisonContainer">
+                
+    </div>
    
     
 </body>

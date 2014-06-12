@@ -12,7 +12,7 @@ function applyMainFilter(name, type) {
     });
 }
 
-function applySubFilter(kb1, kb2, typeF) {
+function applySubFilterKb(kb1, kb2, typeF) {
     $(".comparisonContainer").load("/analytics_comparatif/apply_sub_filters_kb", {
         kb1: kb1, kb2: kb2, typef: typeF
     });
